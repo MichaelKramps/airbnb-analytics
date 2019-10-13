@@ -2,6 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7633425d-59a7-47d0-ba70-6d56b7ed0161" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ViewBuilder/CsvParser/CsvParser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ViewBuilder/CsvParser/CsvParser.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ViewBuilder/ViewBuilder.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ViewBuilder/ViewBuilder.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/App.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -26,20 +33,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App/App.test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/App/App.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="44" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
+            <state relative-caret-position="324">
+              <caret line="30" column="45" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -48,10 +43,40 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/App/App.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="307">
+              <caret line="47" selection-start-line="47" selection-end-line="47" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ViewBuilder/ViewBuilder.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ViewBuilder/CsvParser/CsvParser.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="41" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="3" column="28" lean-forward="true" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+              <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -65,19 +90,16 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/App.test.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/App/App.css" />
+        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/App/App.test.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/ViewBuilder/ViewBuilder.js" />
+        <option value="$PROJECT_DIR$/src/ViewBuilder/CsvParser/CsvParser.test.js" />
         <option value="$PROJECT_DIR$/src/App/App.js" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/src/ViewBuilder/CsvParser/CsvParser.js" />
       </list>
     </option>
   </component>
@@ -104,6 +126,11 @@
             <path>
               <item name="airbnb-analytics" type="b2602c69:ProjectViewProjectNode" />
               <item name="airbnb-analytics" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="airbnb-analytics" type="b2602c69:ProjectViewProjectNode" />
+              <item name="airbnb-analytics" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -116,6 +143,19 @@
               <item name="airbnb-analytics" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="App" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="airbnb-analytics" type="b2602c69:ProjectViewProjectNode" />
+              <item name="airbnb-analytics" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ViewBuilder" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="airbnb-analytics" type="b2602c69:ProjectViewProjectNode" />
+              <item name="airbnb-analytics" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ViewBuilder" type="462c0819:PsiDirectoryNode" />
+              <item name="CsvParser" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -149,7 +189,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Jest.changes component state when input state changes">
+  <component name="RunManager" selected="Jest.App.test.js">
+    <configuration name="App.test.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/src/App/App.test.js" />
+      <method v="2" />
+    </configuration>
     <configuration name="changes component state when input state changes" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -204,6 +254,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.App.test.js" />
         <item itemvalue="Jest.changes component state when input state changes" />
         <item itemvalue="Jest.contains an upload button (1)" />
         <item itemvalue="Jest.contains an upload button" />
@@ -221,44 +272,44 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1570928910338</updated>
-      <workItem from="1570928915173" duration="6376000" />
+      <workItem from="1570928915173" duration="15545000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="changes_component_state_when_input_state_changes - 2019.10.12 at 21h 46m 16s.xml">
+    <history-entry file="changes_component_state_when_input_state_changes - 2019.10.13 at 10h 07m 56s.xml">
       <configuration name="changes component state when input state changes" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="changes_component_state_when_input_state_changes - 2019.10.12 at 21h 50m 29s.xml">
-      <configuration name="changes component state when input state changes" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="App_test_js - 2019.10.13 at 10h 15m 47s.xml">
+      <configuration name="App.test.js" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="changes_component_state_when_input_state_changes - 2019.10.12 at 21h 50m 58s.xml">
-      <configuration name="changes component state when input state changes" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="App_test_js - 2019.10.13 at 10h 16m 11s.xml">
+      <configuration name="App.test.js" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="changes_component_state_when_input_state_changes - 2019.10.12 at 21h 51m 24s.xml">
-      <configuration name="changes component state when input state changes" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="App_test_js - 2019.10.13 at 10h 17m 41s.xml">
+      <configuration name="App.test.js" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="changes_component_state_when_input_state_changes - 2019.10.12 at 21h 54m 05s.xml">
-      <configuration name="changes component state when input state changes" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="App_test_js - 2019.10.13 at 10h 19m 28s.xml">
+      <configuration name="App.test.js" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="changes_component_state_when_input_state_changes - 2019.10.12 at 21h 56m 07s.xml">
-      <configuration name="changes component state when input state changes" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="App_test_js - 2019.10.13 at 10h 23m 28s.xml">
+      <configuration name="App.test.js" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="changes_component_state_when_input_state_changes - 2019.10.12 at 21h 57m 18s.xml">
-      <configuration name="changes component state when input state changes" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="App_test_js - 2019.10.13 at 10h 23m 45s.xml">
+      <configuration name="App.test.js" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="changes_component_state_when_input_state_changes - 2019.10.12 at 21h 58m 00s.xml">
-      <configuration name="changes component state when input state changes" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="App_test_js - 2019.10.13 at 10h 24m 47s.xml">
+      <configuration name="App.test.js" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="changes_component_state_when_input_state_changes - 2019.10.12 at 21h 58m 25s.xml">
-      <configuration name="changes component state when input state changes" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="App_test_js - 2019.10.13 at 10h 29m 42s.xml">
+      <configuration name="App.test.js" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="changes_component_state_when_input_state_changes - 2019.10.12 at 21h 59m 52s.xml">
-      <configuration name="changes component state when input state changes" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="App_test_js - 2019.10.13 at 10h 35m 45s.xml">
+      <configuration name="App.test.js" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6376000" />
+    <option name="totallyTimeSpent" value="15545000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -269,17 +320,17 @@
       <window_info id="Capture Tool" />
       <window_info id="UI Designer" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Build" weight="0.3286119" />
-      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Terminal" weight="0.3286119" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -304,13 +355,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="67" lean-forward="true" selection-start-line="9" selection-start-column="67" selection-end-line="9" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -340,30 +384,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="28" lean-forward="true" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+        <state relative-caret-position="170">
+          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/sinon/lib/sinon/sandbox.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="68" column="8" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/App/App.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+        <state relative-caret-position="324">
+          <caret line="30" column="45" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ViewBuilder/ViewBuilder.test.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ViewBuilder/CsvParser/CsvParser.test.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ViewBuilder/ViewBuilder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="44" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
+        <state relative-caret-position="307">
+          <caret line="47" selection-start-line="47" selection-end-line="47" selection-end-column="19" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ViewBuilder/CsvParser/CsvParser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="41" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="41" />
         </state>
       </provider>
     </entry>
