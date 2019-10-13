@@ -1,9 +1,9 @@
 class CsvParser {
-    static readCsvFile(e){
+    static readCsvFile(e, callback){
         var reader = new FileReader();
         reader.addEventListener('load', function (e) {
             let csvdata = e.target.result;
-            return CsvParser.parseCsvFile(csvdata); // calling function for parse csv data
+            callback(CsvParser.parseCsvFile(csvdata)); // calling function for parse csv data
         });
         reader.readAsBinaryString(document.getElementById('airbnb-csv-upload').files[0]);
     }

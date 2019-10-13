@@ -15,7 +15,7 @@ class App extends React.Component {
 
   fileUploadHandler(e) {
 
-    console.log(CsvParser.readCsvFile(e));
+    CsvParser.readCsvFile(e, function(data){console.log(data)});
 
 
     this.setState({
