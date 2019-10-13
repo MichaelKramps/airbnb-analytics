@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, {render, mount} from 'enzyme';
+import sinon from "sinon";
 import App from './App';
 
 Enzyme.configure({adapter: new Adapter()});
@@ -23,11 +24,9 @@ it('changes component state when input state changes', () => {
   const event = {target: {name: "airbnb-csv-upload", value: "anything"}};
   let app = mount(<App />);
 
-  let initialState = app.state;
-  console.log(app.state("counter"));
+  expect(app.state("fileUploaded")).toBe(false);
 
   app.find('#airbnb-csv-upload').simulate('change', event);
 
-  console.log(app.state("counter"));
-  expect(app.state).not.toEqual(initialState);
+  expect(app.state("fileUploaded")).toBe(true);
 })
