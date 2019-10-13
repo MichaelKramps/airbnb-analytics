@@ -3,6 +3,8 @@ import logo from '../logo.svg';
 import './App.css';
 
 function App() {
+  // The contents of the csv can be stored in the state
+  // Should be able to update values (or add to historical data) and see new analytics quite easily
   const [state, setState] = React.useState({counter:0});
 
   const fileUploadHandler = event => {
