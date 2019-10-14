@@ -10,36 +10,28 @@ class App extends React.Component {
     this.state = {
       fileUploaded: false
       // state should basically mirror the view model
+      // or at least provide the data necessary to build the view model
     };
+    this.csvParser = new CsvParser();
+    this.fileUploadHandler = this.fileUploadHandler.bind(this);
   }
 
   fileUploadHandler(e) {
+    this.csvParser.readCsvFile(e, (data) => {
+      console.log(data);
 
-    CsvParser.readCsvFile(e, function(data){console.log(data)});
-
-
-    this.setState({
-      fileUploaded: true
+      this.setState({
+        fileUploaded: true
+      });
     });
   }
-
-  // static parseCsvFile(fileData) {
-  //   let parsedata = [];
-  //
-  //   let newLinebrk = fileData.split("\n");
-  //   for(let i = 0; i < newLinebrk.length; i++) {
-  //     parsedata.push(newLinebrk[i].split(","))
-  //   }
-  //
-  //   console.log(parsedata);
-  // }
 
   render() {
     return(
       <div>
         <label>Upload a csv: </label>
         <input type="file" name="airbnb-csv-upload" id="airbnb-csv-upload" onChange={(e) => this.fileUploadHandler(e)}/>
-        <p>{this.state.counter}</p>
+        <p>{this.state.fileUploaded}</p>
       </div>
     )
   };

@@ -1,14 +1,22 @@
 class CsvParser {
-    static readCsvFile(e, callback){
-        var reader = new FileReader();
-        reader.addEventListener('load', function (e) {
-            let csvdata = e.target.result;
-            callback(CsvParser.parseCsvFile(csvdata)); // calling function for parse csv data
-        });
-        reader.readAsBinaryString(document.getElementById('airbnb-csv-upload').files[0]);
+    constructor() {
+        this.readCsvFile.bind(this);
+        this.parseCsvFile.bind(this);
     }
 
-    static parseCsvFile(fileData) {
+    readCsvFile(e, callback){
+        var reader = new FileReader();
+        reader.addEventListener('load', (e) => {
+            let csvdata = e.target.result;
+            callback(this.parseCsvFile(csvdata)); // calling function for parse csv data
+        });
+        let uploadButton = document.getElementById('airbnb-csv-upload');
+        if(uploadButton) {
+            reader.readAsBinaryString(document.getElementById('airbnb-csv-upload').files[0]);
+        }
+    }
+
+    parseCsvFile(fileData) {
         let parsedata = [];
 
         let newLinebrk = fileData.split("\n");
