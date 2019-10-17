@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import CsvParser from '../ViewBuilder/CsvParser/CsvParser';
+import CsvParser from './CsvParser/CsvParser';
+import ViewBuilder from './ViewBuilder/ViewBuilder';
 
 class App extends React.Component {
   // The contents of the csv can be stored in the state
@@ -13,16 +14,14 @@ class App extends React.Component {
       // or at least provide the data necessary to build the view model
     };
     this.csvParser = new CsvParser();
+    this.viewBuilder = new ViewBuilder();
     this.fileUploadHandler = this.fileUploadHandler.bind(this);
   }
 
   fileUploadHandler(e) {
     this.csvParser.readCsvFile(e, (data) => {
-      console.log(data);
-
-      this.setState({
-        fileUploaded: true
-      });
+      this.setState(this.viewBuilder.createViewModel(data));
+      console.log(this.state)
     });
   }
 
@@ -31,7 +30,18 @@ class App extends React.Component {
       <div>
         <label>Upload a csv: </label>
         <input type="file" name="airbnb-csv-upload" id="airbnb-csv-upload" onChange={(e) => this.fileUploadHandler(e)}/>
-        <p>{this.state.fileUploaded}</p>
+        <div>
+          <span>Booked 24 hours before start date: </span>{this.state.oneDayBefore}
+        </div>
+        <div>
+          <span>Booked 1 week before start date: </span>{this.state.oneWeekBefore}
+        </div>
+        <div>
+          <span>Booked 1 month before start date: </span>{this.state.oneMonthBefore}
+        </div>
+        <div>
+          <span>Booked more than 1 month before start date: </span>{this.state.moreThanOneMonthBefore}
+        </div>
       </div>
     )
   };
