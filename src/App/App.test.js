@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, {render, mount} from 'enzyme';
-import sinon from "sinon";
 import App from './App';
 
 Enzyme.configure({adapter: new Adapter()});

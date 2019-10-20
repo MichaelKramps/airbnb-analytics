@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "date-diff": "^0.2.1",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-scripts": "3.2.0",
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.13.2",
     "sinon": "^7.5.0"
   },
   "scripts": {

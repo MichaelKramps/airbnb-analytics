@@ -18,7 +18,7 @@ class CsvParser {
     parseCsvFile(fileData) {
         let parseData = [];
 
-        let newLine = fileData.split("\n");
+        let newLine = fileData.toLowerCase().split("\n");
         for(let i = 0; i < newLine.length; i++) {
             parseData.push(newLine[i].split(","))
         }
