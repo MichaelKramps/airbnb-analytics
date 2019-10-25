@@ -32,14 +32,14 @@ class DataSplitter {
             let thisRow = this.data[i];
             let thisListingName = thisRow[this.titleIndexes.listingNameIndex];
             let foundMatchingListingName = false;
-            for (let j = 0; j < splitData.length; j++) {
-                let thisListing = splitData[j]; // array of data rows with the same listing name
+            for (let j = 0; j < splitData.length; j++) { // check existing splitData for a matching listing name
+                let thisListing = splitData[j]; // this is an array of data rows all with the same listing name
                 if (thisListing[0][this.titleIndexes.listingNameIndex] === thisListingName){
                     thisListing.push(thisRow);
                     foundMatchingListingName = true;
                 }
             }
-            if (!foundMatchingListingName) {
+            if (!foundMatchingListingName) { // if we didn't find a matching listing name, make a new one
                 let newListingName = [];
                 newListingName.push(thisRow);
                 splitData.push(newListingName);
