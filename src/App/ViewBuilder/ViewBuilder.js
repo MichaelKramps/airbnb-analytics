@@ -1,5 +1,5 @@
-var DateDiff = require('date-diff');
 import TitleIndexer from './TitleIndexer/TitleIndexer'
+var DateDiff = require('date-diff');
 
 class ViewBuilder {
     constructor(){
