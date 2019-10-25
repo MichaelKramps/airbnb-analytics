@@ -1,68 +1,18 @@
 var DateDiff = require('date-diff');
+import TitleIndexer from './TitleIndexer/TitleIndexer'
 
 class ViewBuilder {
     constructor(){
         this.createViewModel.bind(this);
-        this.getTitleIndexes.bind(this);
         this.viewModel = {};
     }
 
     createViewModel(data){
-        let titleRow = data[0];
+        let titleIndexes = TitleIndexer.getTitleIndexes(data[0]);
 
-        this.addBookingPlanning(data, this.getTitleIndexes(titleRow));
+        this.addBookingPlanning(data, titleIndexes);
 
         return this.viewModel;
-    }
-
-    getTitleIndexes(titleRow){
-        let titleIndexes = {};
-
-        for (let i = 0; i < titleRow.length; i++){
-            let thisTitle = titleRow[i];
-            switch(thisTitle){
-                case "start date":
-                    titleIndexes.startDateIndex = i;
-                    break;
-                case "end date":
-                    titleIndexes.endDateIndex = i;
-                    break;
-                case "booked":
-                    titleIndexes.bookDateIndex = i;
-                    break;
-                case "date":
-                    titleIndexes.paymentDateIndex = i;
-                    break;
-                case "nights":
-                    titleIndexes.numberNightsIndex = i;
-                    break;
-                case "type":
-                    titleIndexes.rowTypeIndex = i;
-                    break;
-                case "listing":
-                    titleIndexes.listingNameIndex = i;
-                    break;
-                case "amount":
-                    titleIndexes.amountPerNightIndex = i;
-                    break;
-                case "paid out":
-                    titleIndexes.amountPaidOutIndex = i;
-                    break;
-                case "host fee":
-                    titleIndexes.hostFeeIndex = i;
-                    break;
-                case "cleaning fee":
-                    titleIndexes.cleaningFeeIndex = i;
-                    break;
-                case "confirmation code":
-                    titleIndexes.confirmationCodeIndex = i;
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        return titleIndexes
     }
 
     addBookingPlanning(data, titleIndexes){
