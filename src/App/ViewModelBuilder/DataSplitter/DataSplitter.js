@@ -7,7 +7,7 @@ class DataSplitter {
         this.data = DataFilterer.filterOutTitleRow(data);
     }
 
-    splitByStartDate(splitDate) {
+    splitByCustomStartDate(splitDate) {
         let splitData = {
             beforeDate: [],
             afterDate: []

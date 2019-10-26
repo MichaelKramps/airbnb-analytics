@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import CsvParser from './CsvParser/CsvParser';
-import ViewBuilder from './ViewBuilder/ViewBuilder';
+import ViewModelBuilder from './ViewModelBuilder/ViewModelBuilder';
 
 class App extends React.Component {
   // The contents of the csv can be stored in the state
@@ -14,7 +14,7 @@ class App extends React.Component {
       // or at least provide the data necessary to build the view model
     };
     this.csvParser = new CsvParser();
-    this.viewBuilder = new ViewBuilder();
+    this.viewBuilder = new ViewModelBuilder();
     this.fileUploadHandler = this.fileUploadHandler.bind(this);
   }
 

@@ -13,7 +13,7 @@ it('splits data by start date', () => {
 
     let dataSplitter = new DataSplitter(data);
 
-    let splitData = dataSplitter.splitByStartDate('01/03/2020');
+    let splitData = dataSplitter.splitByCustomStartDate('01/03/2020');
 
     expect(splitData.beforeDate).toEqual([
         ['01/01/2020', '100'],
