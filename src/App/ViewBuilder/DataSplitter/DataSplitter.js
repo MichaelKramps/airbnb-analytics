@@ -1,9 +1,10 @@
 import TitleIndexer from "../TitleIndexer/TitleIndexer";
+import DataFilterer from "../DataFilterer/DataFilterer";
 
 class DataSplitter {
     constructor(data) {
-        this.data = data;
         this.titleIndexes = TitleIndexer.getTitleIndexes(data[0]);
+        this.data = DataFilterer.filterOutTitleRow(data);
     }
 
     splitByStartDate(splitDate) {
@@ -12,7 +13,7 @@ class DataSplitter {
             afterDate: []
         };
 
-        for (let i = 1; i < this.data.length; i++) {
+        for (let i = 0; i < this.data.length; i++) {
             let thisRow = this.data[i];
             let thisDate = thisRow[this.titleIndexes.startDateIndex];
             if (new Date(thisDate) < new Date(splitDate)) {
@@ -28,7 +29,7 @@ class DataSplitter {
     splitByListingName() {
         let splitData = [];
 
-        for (let i = 1; i < this.data.length; i++) {
+        for (let i = 0; i < this.data.length; i++) {
             let thisRow = this.data[i];
             let thisListingName = thisRow[this.titleIndexes.listingNameIndex];
             let foundMatchingListingName = false;
