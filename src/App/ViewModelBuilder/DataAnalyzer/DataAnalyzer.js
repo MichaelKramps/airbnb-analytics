@@ -18,8 +18,8 @@ class DataAnalyzer{
         return totalPayout;
     }
 
-    getNumberOfGuests() {
-        return this.data.length;
+    getNumberOfGuests(data = this.data) {
+        return data.length;
     }
 }
 

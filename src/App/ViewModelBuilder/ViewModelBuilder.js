@@ -30,8 +30,7 @@ class ViewModelBuilder {
 
             thisListing.name = thisData[0][this.titleIndexes.listingNameIndex];
 
-            let thisDataAnalyzer = new DataAnalyzer(thisData);
-            thisListing.totalStays = thisDataAnalyzer.getNumberOfGuests();
+            thisListing.totalStays = this.dataAnalyzer.getNumberOfGuests(thisData);
 
             this.viewModel.totalStaysByListing.push(thisListing);
         }
