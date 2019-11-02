@@ -18,6 +18,16 @@ class DataAnalyzer{
         return totalPayout;
     }
 
+    getNumberOfNights(data = this.data) {
+        let totalNights = 0;
+
+        for (let i = 0; i < data.length; i++) {
+            totalNights += parseInt(data[i][this.titleIndexes.numberNightsIndex]);
+        }
+
+        return totalNights
+    }
+
     getNumberOfGuests(data = this.data) {
         return data.length;
     }

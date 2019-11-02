@@ -15,6 +15,21 @@ it('Adds up total payout amount', () => {
     expect(totalPayout).toBe(1468);
 });
 
+it('Adds up total number of nights', () => {
+    let data = [
+        ["listing", "paid out", 'nights'],
+        ["abc", "123", '2'],
+        ["abc", "456", '7'],
+        ["abc", "789", '1'],
+        ["abc", "100", '2']
+    ];
+
+    let dataAnalyzer = new DataAnalyzer(data);
+    let numberOfNights = dataAnalyzer.getNumberOfNights();
+
+    expect(numberOfNights).toBe(12);
+});
+
 it('Adds up total number of guests', () => {
     let data = [
         ["listing", "paid out"],
@@ -25,9 +40,9 @@ it('Adds up total number of guests', () => {
     ];
 
     let dataAnalyzer = new DataAnalyzer(data);
-    let totalPayout = dataAnalyzer.getNumberOfGuests();
+    let numberOfGuests = dataAnalyzer.getNumberOfGuests();
 
-    expect(totalPayout).toBe(4);
+    expect(numberOfGuests).toBe(4);
 });
 
 it('Adds up total number of guests of passed in data, instead of data from constructor', () => {

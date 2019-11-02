@@ -3,17 +3,23 @@ import React from 'react';
 class TotalStaysByListing extends React.Component {
 
     render() {
-        console.log(this.props);
+        let listingNames = this.props.totalStaysByListing.map((listing) =>
+            <div>{listing.name}</div>
+        );
         let staysByListing = this.props.totalStaysByListing.map((listing) =>
-            <div>
-                <h3>{listing.name}</h3>
-                <p>Number of stays: {listing.totalStays}</p>
-            </div>
+            <div>{listing.totalStays}</div>
         );
         return (
-            <div>
-                {staysByListing}
-            </div>
+            <React.Fragment>
+                <div className={"staticDataContainer"}>
+                    <div>Category</div>
+                    {listingNames}
+                </div>
+                <div className={"staticDataContainer"}>
+                    <div>Number of Stays</div>
+                    {staysByListing}
+                </div>
+            </React.Fragment>
         )
     }
 
