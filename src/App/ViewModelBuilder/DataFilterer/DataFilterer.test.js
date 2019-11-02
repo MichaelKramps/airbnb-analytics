@@ -1,4 +1,5 @@
 import DataFilterer from './DataFilterer'
+import TitleIndexer from "../TitleIndexer/TitleIndexer";
 
 it('Filters out title row if present', () => {
     let data = [
@@ -35,4 +36,18 @@ it('Doesnt filter if title row not present', () => {
     let filteredData = DataFilterer.filterOutTitleRow(data);
 
     expect(filteredData).toEqual(data);
+})
+
+it('filters out payout rows', () => {
+    let data = [
+        ['type', 'listing'],
+        ['payout', 'awesome listing'],
+        ['reservation', 'awesome listing']
+    ];
+
+    let filteredData = DataFilterer.filterOutPayouts(DataFilterer.filterOutTitleRow(data), TitleIndexer.getTitleIndexes(data[0]));
+
+    expect(filteredData).toEqual([
+        ['reservation', 'awesome listing']
+    ]);
 })

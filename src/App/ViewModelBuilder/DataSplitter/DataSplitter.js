@@ -26,11 +26,11 @@ class DataSplitter {
         return splitData;
     }
 
-    splitByListingName() {
+    splitByListingName(data = this.data) {
         let splitData = [];
 
-        for (let i = 0; i < this.data.length; i++) {
-            let thisRow = this.data[i];
+        for (let i = 0; i < data.length; i++) {
+            let thisRow = data[i];
             let thisListingName = thisRow[this.titleIndexes.listingNameIndex];
             let foundMatchingListingName = false;
             for (let j = 0; j < splitData.length; j++) { // check existing splitData for a matching listing name

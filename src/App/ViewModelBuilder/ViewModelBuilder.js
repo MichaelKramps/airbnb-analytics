@@ -1,6 +1,7 @@
 import DataSplitter from "./DataSplitter/DataSplitter";
 import DataAnalyzer from "./DataAnalyzer/DataAnalyzer";
 import TitleIndexer from "./TitleIndexer/TitleIndexer";
+import DataFilterer from "./DataFilterer/DataFilterer";
 
 var DateDiff = require('date-diff');
 
@@ -22,7 +23,8 @@ class ViewModelBuilder {
 
     addTotalStaysByListing() {
         this.viewModel.totalStaysByListing = [];
-        let dataSplitByListingName = this.dataSplitter.splitByListingName();
+        let filterPayouts = DataFilterer.filterOutPayouts(this.data, this.titleIndexes);
+        let dataSplitByListingName = this.dataSplitter.splitByListingName(filterPayouts);
 
         for (let i = 0; i < dataSplitByListingName.length; i++) {
             let thisListing = {};
