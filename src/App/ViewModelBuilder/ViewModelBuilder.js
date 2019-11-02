@@ -3,8 +3,6 @@ import DataAnalyzer from "./DataAnalyzer/DataAnalyzer";
 import TitleIndexer from "./TitleIndexer/TitleIndexer";
 import DataFilterer from "./DataFilterer/DataFilterer";
 
-var DateDiff = require('date-diff');
-
 class ViewModelBuilder {
     constructor(data) {
         this.data = data;

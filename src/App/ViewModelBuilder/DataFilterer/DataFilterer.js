@@ -32,7 +32,7 @@ class DataFilterer{
                 filteredData.push(thisRow);
             }
         }
-        return filteredData;return undefined;
+        return filteredData;
     }
 }
 

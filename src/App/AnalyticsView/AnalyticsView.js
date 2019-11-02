@@ -3,10 +3,6 @@ import TotalStaysByListing from './TotalStaysByListing/TotalStaysByListing'
 
 class AnalyticsView extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return(
             <React.Fragment>
