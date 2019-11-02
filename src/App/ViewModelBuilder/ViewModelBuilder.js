@@ -23,7 +23,8 @@ class ViewModelBuilder {
 
     addTotalStaysByListing() {
         this.viewModel.totalStaysByListing = [];
-        let filterPayouts = DataFilterer.filterOutPayouts(this.data, this.titleIndexes);
+        let filterBlankNames = DataFilterer.filterOutBlankListings(DataFilterer.filterOutTitleRow(this.data), this.titleIndexes);
+        let filterPayouts = DataFilterer.filterOutPayouts(filterBlankNames, this.titleIndexes)
         let dataSplitByListingName = this.dataSplitter.splitByListingName(filterPayouts);
 
         for (let i = 0; i < dataSplitByListingName.length; i++) {

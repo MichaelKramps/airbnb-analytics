@@ -51,3 +51,20 @@ it('filters out payout rows', () => {
         ['reservation', 'awesome listing']
     ]);
 })
+
+it('filters out blank listing names', () => {
+    let data = [
+        ['type', 'listing'],
+        ['payout', ''],
+        ['reservation', 'awesome listing'],
+        ['payout', ' '],
+        ['reservation', null],
+        ['reservation', undefined]
+    ];
+
+    let filteredData = DataFilterer.filterOutBlankListings(DataFilterer.filterOutTitleRow(data), TitleIndexer.getTitleIndexes(data[0]));
+
+    expect(filteredData).toEqual([
+        ['reservation', 'awesome listing']
+    ]);
+})

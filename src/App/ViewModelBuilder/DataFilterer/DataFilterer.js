@@ -21,6 +21,19 @@ class DataFilterer{
         }
         return filteredData;
     }
+
+    static filterOutBlankListings(data, titleIndexes) {
+        let filteredData = [];
+        for(let i = 0; i < data.length; i++){
+            let thisRow = data[i];
+            let thisListingName = thisRow[titleIndexes.listingNameIndex];
+            let listingNameRegex = /^\s*$/;
+            if (thisListingName !== null && thisListingName !== undefined && !listingNameRegex.test(thisListingName)){
+                filteredData.push(thisRow);
+            }
+        }
+        return filteredData;return undefined;
+    }
 }
 
 export default DataFilterer;
