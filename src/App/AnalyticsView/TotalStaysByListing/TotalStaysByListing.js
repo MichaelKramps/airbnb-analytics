@@ -7,7 +7,7 @@ class TotalStaysByListing extends React.Component {
             <div>{listing.name}</div>
         );
         let staysByListing = this.props.totalStaysByListing.map((listing) =>
-            <div>{listing.totalStays}</div>
+            <div>{listing.totalStays} stays</div>
         );
         return (
             <React.Fragment>

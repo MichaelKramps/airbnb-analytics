@@ -11,7 +11,7 @@ class DataAnalyzer{
         let totalPayout = 0;
 
         for (let i = 0; i < this.data.length; i++) {
-            let thisPayout = this.data[i][this.titleIndexes.amountPaidOutIndex]
+            let thisPayout = this.data[i][this.titleIndexes.paidOutIndex]
             totalPayout += parseInt(thisPayout);
         }
 
@@ -25,11 +25,21 @@ class DataAnalyzer{
             totalNights += parseInt(data[i][this.titleIndexes.numberNightsIndex]);
         }
 
-        return totalNights
+        return totalNights;
     }
 
     getNumberOfGuests(data = this.data) {
         return data.length;
+    }
+
+    getAmoundPaid(data = this.data) {
+        let totalPaidOut = 0;
+
+        for (let i = 0; i < data.length; i++) {
+            totalPaidOut += parseInt(data[i][this.titleIndexes.amountPaidIndex]);
+        }
+
+        return totalPaidOut;
     }
 }
 

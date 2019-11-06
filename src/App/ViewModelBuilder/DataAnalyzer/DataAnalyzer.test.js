@@ -64,3 +64,19 @@ it('Adds up total number of guests of passed in data, instead of data from const
 
     expect(totalPayout).toBe(2);
 });
+
+it('adds up total paid out', () => {
+    let data = [
+        ["listing", "amount"],
+        ["abc", "123"],
+        ["abc", "456"],
+        ["abc", "789"],
+        ["abc", "100"]
+    ];
+
+    let dataAnalyzer = new DataAnalyzer(data);
+
+    let totalPayout = dataAnalyzer.getTotalPaidOut();
+
+    expect(totalPayout).toBe(1468);
+});

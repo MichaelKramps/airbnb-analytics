@@ -28,10 +28,10 @@ class TitleIndexer{
                     titleIndexes.listingNameIndex = i;
                     break;
                 case "amount":
-                    titleIndexes.amountPerNightIndex = i;
+                    titleIndexes.amountPaidIndex = i;
                     break;
                 case "paid out":
-                    titleIndexes.amountPaidOutIndex = i;
+                    titleIndexes.paidOutIndex = i;
                     break;
                 case "host fee":
                     titleIndexes.hostFeeIndex = i;
