@@ -19,7 +19,7 @@ class ViewModelBuilder {
         this.addTotalNightsByListing();
         this.addAmountPaidByListing();
         this.addAveragePricePerNightByListing();
-        this.addAverageNightsPerGuesByListing();
+        this.addAverageNightsPerGuestByListing();
         return this.viewModel;
     }
 
@@ -71,7 +71,7 @@ class ViewModelBuilder {
 
             thisListing.name = thisData[0][this.titleIndexes.listingNameIndex];
 
-            thisListing.amountPaid = this.dataAnalyzer.getAmoundPaid(thisData);
+            thisListing.amountPaid = this.dataAnalyzer.getAmountPaid(thisData).toFixed(2);
 
             this.viewModel.amountPaidByListing.push(thisListing);
         }
@@ -94,7 +94,7 @@ class ViewModelBuilder {
         }
     }
 
-    addAverageNightsPerGuesByListing() {
+    addAverageNightsPerGuestByListing() {
         this.viewModel.averageNightsPerGuestByListing = [];
 
         for (let i = 0; i < this.viewModel.totalNightsByListing.length; i++) {

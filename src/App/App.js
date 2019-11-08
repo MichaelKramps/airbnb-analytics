@@ -23,7 +23,6 @@ class App extends React.Component {
       this.csvParser.readCsvFile(e, (data) => {
           let viewBuilder = new ViewModelBuilder(data);
           this.setState(viewBuilder.createViewModel());
-          console.log(this.state)
       });
   }
 

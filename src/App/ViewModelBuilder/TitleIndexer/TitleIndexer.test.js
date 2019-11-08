@@ -45,6 +45,15 @@ it('Number of nights index returned correctly', () => {
     expect(titleIndexes.numberNightsIndex).toBe(0)
 });
 
+it('Number of nights index returned correctly with # of nights label', () => {
+    let parsedCsv = ["# of nights", "booked", "date", "something"];
+
+
+    let titleIndexes = TitleIndexer.getTitleIndexes(parsedCsv);
+
+    expect(titleIndexes.numberNightsIndex).toBe(0)
+});
+
 it('Row type index returned correctly', () => {
     let parsedCsv = ["nights", "booked", "date", "type"];
     
@@ -63,13 +72,22 @@ it('Listing name index returned correctly', () => {
     expect(titleIndexes.listingNameIndex).toBe(1)
 });
 
-it('Amount per night index returned correctly', () => {
+it('Amount Paid index returned correctly', () => {
     let parsedCsv = ["nights", "listing", "amount", "type"];
     
 
     let titleIndexes = TitleIndexer.getTitleIndexes(parsedCsv);
 
-    expect(titleIndexes.amountPerNightIndex).toBe(2)
+    expect(titleIndexes.amountPaidIndex).toBe(2)
+})
+
+it('Amount Paid index returned correctly for other csv', () => {
+    let parsedCsv = ["nights", "listing", "earnings", "type"];
+
+
+    let titleIndexes = TitleIndexer.getTitleIndexes(parsedCsv);
+
+    expect(titleIndexes.amountPaidIndex).toBe(2)
 })
 
 it('Amount paid out index returned correctly', () => {
@@ -78,7 +96,7 @@ it('Amount paid out index returned correctly', () => {
 
     let titleIndexes = TitleIndexer.getTitleIndexes(parsedCsv);
 
-    expect(titleIndexes.amountPaidOutIndex).toBe(0)
+    expect(titleIndexes.paidOutIndex).toBe(0)
 });
 
 it('Host fee index returned correctly', () => {

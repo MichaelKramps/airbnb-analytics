@@ -5,7 +5,9 @@ class TitleIndexer{
 
         for (let i = 0; i < titleRow.length; i++){
             let thisTitle = titleRow[i];
-            switch(thisTitle){
+            console.log(thisTitle)
+            console.log("kramps" + (thisTitle.trim() === "earnings"))
+            switch(thisTitle.trim()){
                 case "start date":
                     titleIndexes.startDateIndex = i;
                     break;
@@ -19,6 +21,7 @@ class TitleIndexer{
                     titleIndexes.paymentDateIndex = i;
                     break;
                 case "nights":
+                case "# of nights":
                     titleIndexes.numberNightsIndex = i;
                     break;
                 case "type":
@@ -28,6 +31,7 @@ class TitleIndexer{
                     titleIndexes.listingNameIndex = i;
                     break;
                 case "amount":
+                case "earnings":
                     titleIndexes.amountPaidIndex = i;
                     break;
                 case "paid out":
@@ -46,7 +50,7 @@ class TitleIndexer{
                     break;
             }
         }
-
+        //titleIndexes.amountPaidIndex = 12;
         return titleIndexes
     }
 }
