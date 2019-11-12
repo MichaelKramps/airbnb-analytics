@@ -5,8 +5,6 @@ class TitleIndexer{
 
         for (let i = 0; i < titleRow.length; i++){
             let thisTitle = titleRow[i];
-            console.log(thisTitle)
-            console.log("kramps" + (thisTitle.trim() === "earnings"))
             switch(thisTitle.trim()){
                 case "start date":
                     titleIndexes.startDateIndex = i;

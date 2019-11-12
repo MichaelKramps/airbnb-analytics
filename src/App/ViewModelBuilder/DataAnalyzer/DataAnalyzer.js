@@ -44,8 +44,6 @@ class DataAnalyzer{
 
     extractNumber(amount){
         if (amount) {
-            console.log(amount);
-            console.log(parseFloat(amount.replace(/[\$,]/g, '')));
             return parseFloat(amount.replace(/\$/g, ''));
         }
         return 0;

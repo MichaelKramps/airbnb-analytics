@@ -20,6 +20,7 @@ class ViewModelBuilder {
         this.addAmountPaidByListing();
         this.addAveragePricePerNightByListing();
         this.addAverageNightsPerGuestByListing();
+        this.addOverallStatsSplitByYearAndByListing();
         return this.viewModel;
     }
 
@@ -62,7 +63,7 @@ class ViewModelBuilder {
     addAmountPaidByListing() {
         this.viewModel.amountPaidByListing = [];
         let filterBlankNames = DataFilterer.filterOutBlankListings(DataFilterer.filterOutTitleRow(this.data), this.titleIndexes);
-        let filterPayouts = DataFilterer.filterOutPayouts(filterBlankNames, this.titleIndexes)
+        let filterPayouts = DataFilterer.filterOutPayouts(filterBlankNames, this.titleIndexes);
         let dataSplitByListingName = this.dataSplitter.splitByListingName(filterPayouts);
 
         for (let i = 0; i < dataSplitByListingName.length; i++) {
@@ -108,6 +109,40 @@ class ViewModelBuilder {
             thisListing.averageNightsPerGuest = (parseInt(numberNights)/parseInt(numberGuests)).toFixed(2);
 
             this.viewModel.averageNightsPerGuestByListing.push(thisListing);
+        }
+    }
+
+    addOverallStatsSplitByYearAndByListing() {
+        this.viewModel.overallStatsByYearAndByListing = [];
+
+        let filterBlankNames = DataFilterer.filterOutBlankListings(DataFilterer.filterOutTitleRow(this.data), this.titleIndexes);
+        let filterPayouts = DataFilterer.filterOutPayouts(filterBlankNames, this.titleIndexes);
+        let dataSplitByListingName = this.dataSplitter.splitByListingName(filterPayouts);
+
+        for (let i = 0; i < dataSplitByListingName.length; i++) {
+            let thisListing = {};
+            let thisData = dataSplitByListingName[i];
+
+            thisListing.name = thisData[0][this.titleIndexes.listingNameIndex];
+            thisListing.years = [];
+            thisListing.amountPaid = [];
+            thisListing.averageNightsPerGuest = [];
+            thisListing.averagePricePerNight = [];
+            thisListing.totalNights = [];
+            thisListing.totalStays = [];
+
+            let dataSplitByYear = this.dataSplitter.splitByYear(thisData);
+
+            for (let j = 0; j < dataSplitByYear.length; j++) {
+                let thisYearsData = dataSplitByYear[j];
+
+                thisListing.years.push(new Date(dataSplitByYear[j][0][this.titleIndexes.startDateIndex]).getFullYear());
+
+                thisListing.amountPaid.push(this.dataAnalyzer.getAmountPaid(thisYearsData));
+                thisListing.totalNights.push(this.dataAnalyzer.getNumberOfNights(thisYearsData));
+            }
+
+            this.viewModel.overallStatsByYearAndByListing.push(thisListing);
         }
     }
 }

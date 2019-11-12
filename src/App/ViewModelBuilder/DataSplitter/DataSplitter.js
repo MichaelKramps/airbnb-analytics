@@ -49,6 +49,30 @@ class DataSplitter {
 
         return splitData;
     }
+
+    splitByYear(data = this.data) {
+        let splitData = [];
+
+        for (let i = 0; i < data.length; i++) {
+            let thisRow = data[i];
+            let thisYear = new Date(thisRow[this.titleIndexes.startDateIndex]).getFullYear();
+            let foundMatchingYear = false;
+            for (let j = 0; j < splitData.length; j++) { // check existing splitData for a matching year
+                let thisListing = splitData[j]; // this is an array of data rows all with the same year
+                if (new Date(thisListing[0][this.titleIndexes.startDateIndex]).getFullYear() === thisYear){
+                    thisListing.push(thisRow);
+                    foundMatchingYear = true;
+                }
+            }
+            if (!foundMatchingYear) { // if we didn't find a matching listing name, make a new one
+                let newYear = [];
+                newYear.push(thisRow);
+                splitData.push(newYear);
+            }
+        }
+
+        return splitData;
+    }
 }
 
 export default DataSplitter;
