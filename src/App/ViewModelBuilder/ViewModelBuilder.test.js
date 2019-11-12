@@ -241,15 +241,45 @@ it('Builds separate yearly totals for each listing (no spillover)', () => {
         [
             {
                 name: 'first listing',
-                years: [2020, 2021],
-                amountPaid: [400, 400],
-                totalNights: [5, 10]
+                years: [
+                    {
+                        year: 2020,
+                        amountPaid: '400.00',
+                        totalNights: 5,
+                        totalStays: 2,
+                        averageNightsPerGuest: '2.50',
+                        averagePricePerNight: '80.00'
+                    },
+                    {
+                        year: 2021,
+                        amountPaid: '400.00',
+                        totalNights: 10,
+                        totalStays: 2,
+                        averageNightsPerGuest: '5.00',
+                        averagePricePerNight: '40.00'
+                    },
+                ]
             },
             {
                 name: 'second listing',
-                years: [2020, 2021],
-                amountPaid: [800, 400],
-                totalNights: [12, 10]
+                years: [
+                    {
+                        year: 2020,
+                        amountPaid: '800.00',
+                        totalNights: 12,
+                        totalStays: 3,
+                        averageNightsPerGuest: '4.00',
+                        averagePricePerNight: '66.67'
+                    },
+                    {
+                        year: 2021,
+                        amountPaid: '400.00',
+                        totalNights: 10,
+                        totalStays: 2,
+                        averageNightsPerGuest: '5.00',
+                        averagePricePerNight: '40.00'
+                    },
+                ]
             }
         ]
     )

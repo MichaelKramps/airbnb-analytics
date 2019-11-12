@@ -4,6 +4,7 @@ import TotalNightsByListing from "./TotalNightsByListing/TotalNightsByListing";
 import AmountPaidByListing from "./AmountPaidByListing/AmountPaidByListing";
 import AveragePricePerNightByListing from "./AveragePricePerNightByListing/AveragePricePerNightByListing";
 import AverageNightsPerGuestByListing from "./AverageNightsPerGuestByListing/AverageNightsPerGuestByListing";
+import DataByYearAndByListing from "./DataSplitByYearAndByListing/DataByYearAndByListing";
 
 class AnalyticsView extends React.Component {
 
@@ -15,6 +16,8 @@ class AnalyticsView extends React.Component {
                 <AverageNightsPerGuestByListing averageNightsPerGuestByListing={this.props.averageNightsPerGuestByListing} />
                 <AmountPaidByListing amountPaidByListing={this.props.amountPaidByListing} />
                 <AveragePricePerNightByListing averagePricePerNightByListing={this.props.averagePricePerNightByListing} />
+
+                <DataByYearAndByListing dataSplitByYear={this.props.overallStatsByYearAndByListing} />
             </React.Fragment>
         )
     };
