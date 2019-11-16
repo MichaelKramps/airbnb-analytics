@@ -8,7 +8,6 @@ import AverageNightsPerGuestByListing from "./AverageNightsPerGuestByListing/Ave
 class DataByListing extends React.Component {
 
     render() {
-        console.log(this.props)
         return(
             <div>
                 <h2>Overall Data Split By Listing</h2>
