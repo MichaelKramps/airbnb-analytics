@@ -1,6 +1,7 @@
 import React from 'react'
 import DataByYearAndByListing from "./DataSplitByYearAndByListing/DataByYearAndByListing";
 import DataByListing from "./DataByListing/DataByListing";
+import DataByMonthAndByListing from "./DataSplitByMonthAndByListing/DataSplitByMonthAndByListing";
 
 class AnalyticsView extends React.Component {
 
@@ -15,6 +16,7 @@ class AnalyticsView extends React.Component {
                     averagePricePerNightByListing={this.props.averagePricePerNightByListing} />
 
                 <DataByYearAndByListing dataSplitByYear={this.props.overallStatsByYearAndByListing} />
+                <DataByMonthAndByListing dataSplitByMonth={this.props.overallStatsByMonthAndByListing} />
             </React.Fragment>
         )
     };

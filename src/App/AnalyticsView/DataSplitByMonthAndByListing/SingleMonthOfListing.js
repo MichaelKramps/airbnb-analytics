@@ -1,11 +1,11 @@
 import React from 'react';
 
-class SingleYearOfListing extends React.Component {
+class SingleMonthOfListing extends React.Component {
 
     render() {
         return (
             <div className={"staticDataContainer"}>
-                <div>{this.props.year}</div>
+                <div>{this.props.year} {this.props.month}</div>
                 <div>{this.props.amountPaid}</div>
                 <div>{this.props.totalStays}</div>
                 <div>{this.props.totalNights}</div>
@@ -17,4 +17,4 @@ class SingleYearOfListing extends React.Component {
 
 }
 
-export default SingleYearOfListing;
+export default SingleMonthOfListing;

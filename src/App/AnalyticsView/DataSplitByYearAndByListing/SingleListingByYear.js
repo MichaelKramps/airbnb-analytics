@@ -4,10 +4,6 @@ import SingleYearOfListing from "./SingleYearOfListing";
 class SingleListingByYear extends React.Component {
 
     render() {
-        console.log(this.props.listingData)
-        // let listingData = this.props.listingData.years.map((year) =>
-        //     <SingleYearOfListing year={year.year} totalStays={year.totalStays} />
-        // );
         return (
             <div>
                 <h3>{this.props.listingData.name}</h3>
