@@ -89,3 +89,39 @@ it('splits data by year', () => {
         ['01/06/2022', '100', 'second listing']
     ])
 })
+
+it('splits data by month', () => {
+    let data = [
+        ['start date', 'amount', 'listing'],
+        ['01/01/2020', '100', 'first listing'],
+        ['01/02/2020', '100', 'second listing'],
+        ['01/03/2020', '100', 'second listing'],
+        ['02/04/2020', '100', 'third listing'],
+        ['03/05/2020', '100', 'first listing'],
+        ['03/06/2020', '100', 'second listing'],
+        ['03/07/2021', '100', 'second listing']
+    ]
+
+    let dataSplitter = new DataSplitter(data);
+
+    let splitData = dataSplitter.splitByMonth();
+
+    expect(splitData[0]).toEqual([
+        ['01/01/2020', '100', 'first listing'],
+        ['01/02/2020', '100', 'second listing'],
+        ['01/03/2020', '100', 'second listing']
+    ])
+
+    expect(splitData[1]).toEqual([
+        ['02/04/2020', '100', 'third listing']
+    ])
+
+    expect(splitData[2]).toEqual([
+        ['03/05/2020', '100', 'first listing'],
+        ['03/06/2020', '100', 'second listing']
+    ])
+
+    expect(splitData[3]).toEqual([
+        ['03/07/2021', '100', 'second listing']
+    ])
+})

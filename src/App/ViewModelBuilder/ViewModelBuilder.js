@@ -21,6 +21,7 @@ class ViewModelBuilder {
         this.addAveragePricePerNightByListing();
         this.addAverageNightsPerGuestByListing();
         this.addOverallStatsSplitByYearAndByListing();
+        this.addOverallStatsSplitByMonthAndByListing();
         return this.viewModel;
     }
 
@@ -143,6 +144,44 @@ class ViewModelBuilder {
             }
 
             this.viewModel.overallStatsByYearAndByListing.push(thisListing);
+        }
+    }
+
+    addOverallStatsSplitByMonthAndByListing() {
+        this.viewModel.overallStatsByMonthAndByListing = [];
+
+        let filterBlankNames = DataFilterer.filterOutBlankListings(DataFilterer.filterOutTitleRow(this.data), this.titleIndexes);
+        let filterPayouts = DataFilterer.filterOutPayouts(filterBlankNames, this.titleIndexes);
+        let dataSplitByListingName = this.dataSplitter.splitByListingName(filterPayouts);
+
+        for (let i = 0; i < dataSplitByListingName.length; i++) {
+            let thisListing = {};
+            let thisData = dataSplitByListingName[i];
+
+            thisListing.name = thisData[0][this.titleIndexes.listingNameIndex];
+            thisListing.months = [];
+
+            let dataSplitByMonth = this.dataSplitter.splitByMonth(thisData);
+
+            for (let j = 0; j < dataSplitByMonth.length; j++) {
+                let thisYearsData = dataSplitByMonth[j];
+                let thisYear = {};
+
+                thisYear.year = new Date(dataSplitByMonth[j][0][this.titleIndexes.startDateIndex]).getFullYear();
+                const monthNames = ["January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"
+                ];
+                thisYear.month = monthNames[new Date(dataSplitByMonth[j][0][this.titleIndexes.startDateIndex]).getMonth()];
+                thisYear.amountPaid = this.dataAnalyzer.getAmountPaid(thisYearsData).toFixed(2);
+                thisYear.totalNights = this.dataAnalyzer.getNumberOfNights(thisYearsData);
+                thisYear.totalStays = this.dataAnalyzer.getNumberOfGuests(thisYearsData);
+                thisYear.averageNightsPerGuest = (thisYear.totalNights / thisYear.totalStays).toFixed(2);
+                thisYear.averagePricePerNight = (thisYear.amountPaid / thisYear.totalNights).toFixed(2);
+
+                thisListing.months.push(thisYear);
+            }
+
+            this.viewModel.overallStatsByMonthAndByListing.push(thisListing);
         }
     }
 }

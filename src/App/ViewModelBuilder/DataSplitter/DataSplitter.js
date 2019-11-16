@@ -73,6 +73,32 @@ class DataSplitter {
 
         return splitData;
     }
+
+    splitByMonth(data = this.data) {
+        let splitData = [];
+
+        for (let i = 0; i < data.length; i++) {
+            let thisRow = data[i];
+            let thisYear = new Date(thisRow[this.titleIndexes.startDateIndex]).getFullYear();
+            let thisMonth = new Date(thisRow[this.titleIndexes.startDateIndex]).getMonth();
+            let foundMatchingMonth = false;
+            for (let j = 0; j < splitData.length; j++) { // check existing splitData for a matching month
+                let thisListing = splitData[j]; // this is an array of data rows all with the same month
+                if ((new Date(thisListing[0][this.titleIndexes.startDateIndex]).getFullYear() === thisYear)
+                    && (new Date(thisListing[0][this.titleIndexes.startDateIndex]).getMonth() === thisMonth)){
+                    thisListing.push(thisRow);
+                    foundMatchingMonth = true;
+                }
+            }
+            if (!foundMatchingMonth) { // if we didn't find a matching month, make a new one
+                let newMonth = [];
+                newMonth.push(thisRow);
+                splitData.push(newMonth);
+            }
+        }
+
+        return splitData;
+    }
 }
 
 export default DataSplitter;
