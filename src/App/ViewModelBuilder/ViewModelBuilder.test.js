@@ -285,7 +285,72 @@ it('Builds separate yearly totals for each listing (no spillover)', () => {
     )
 });
 
-it('Builds separate yearly totals for each listing (no spillover)', () => {
+it('Builds separate yearly totals for each listing (with spillover)', () => {
+    let data = [
+        ['start date', 'amount', 'nights', 'listing'],
+        ['01/01/2020', '300', '2', 'first listing'],
+        ['02/02/2020', '200', '3', 'second listing'],
+        ['04/03/2020', '500', '4', 'second listing'],
+        ['05/04/2020', '100', '5', 'second listing'],
+        ['12/25/2020', '1200', '12', 'first listing'],
+        ['01/06/2021', '200', '5', 'second listing'],
+        ['03/06/2021', '200', '5', 'first listing'],
+        ['07/06/2021', '200', '5', 'first listing'],
+        ['09/06/2021', '200', '5', 'second listing'],
+    ]
+
+    let viewModelBuilder = new ViewModelBuilder(data);
+    let viewModel = viewModelBuilder.createViewModel();
+
+    expect(viewModel.overallStatsByYearAndByListing).toEqual(
+        [
+            {
+                name: 'first listing',
+                years: [
+                    {
+                        year: 2020,
+                        amountPaid: '1000.00',
+                        totalNights: 9,
+                        totalStays: 2,
+                        averageNightsPerGuest: '4.50',
+                        averagePricePerNight: '111.11'
+                    },
+                    {
+                        year: 2021,
+                        amountPaid: '900.00',
+                        totalNights: 15,
+                        totalStays: 3,
+                        averageNightsPerGuest: '5.00',
+                        averagePricePerNight: '60.00'
+                    },
+                ]
+            },
+            {
+                name: 'second listing',
+                years: [
+                    {
+                        year: 2020,
+                        amountPaid: '800.00',
+                        totalNights: 12,
+                        totalStays: 3,
+                        averageNightsPerGuest: '4.00',
+                        averagePricePerNight: '66.67'
+                    },
+                    {
+                        year: 2021,
+                        amountPaid: '400.00',
+                        totalNights: 10,
+                        totalStays: 2,
+                        averageNightsPerGuest: '5.00',
+                        averagePricePerNight: '40.00'
+                    },
+                ]
+            }
+        ]
+    )
+});
+
+it('Builds separate monthly totals for each listing (no spillover)', () => {
     let data = [
         ['start date', 'amount', 'nights', 'listing'],
         ['01/01/2020', '300', '2', 'first listing'],

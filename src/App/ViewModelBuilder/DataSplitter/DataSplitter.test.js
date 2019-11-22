@@ -90,6 +90,38 @@ it('splits data by year', () => {
     ])
 })
 
+it('splits data by year with spillover', () => {
+    let data = [
+        ['start date', 'nights', 'amount', 'listing'],
+        ['01/01/2020', '1', '100', 'first listing'],
+        ['01/02/2020', '1', '100', 'second listing'],
+        ['12/25/2020', '12', '1200', 'second listing'],
+        ['01/04/2021', '1', '100', 'third listing'],
+        ['01/05/2021', '1', '100', 'first listing'],
+        ['01/06/2022', '1', '100', 'second listing']
+    ]
+
+    let dataSplitter = new DataSplitter(data);
+
+    let splitData = dataSplitter.splitByYear();
+
+    expect(splitData[0]).toEqual([
+        ['01/01/2020', '1', '100', 'first listing'],
+        ['01/02/2020', '1', '100', 'second listing'],
+        ['12/25/2020', '7', '700', 'second listing']
+    ])
+
+    expect(splitData[1]).toEqual([
+        ['01/01/2021', '5', '500', 'third listing'],
+        ['01/04/2021', '1', '100', 'third listing'],
+        ['01/05/2021', '1', '100', 'first listing']
+    ])
+
+    expect(splitData[2]).toEqual([
+        ['01/06/2022', '100', 'second listing']
+    ])
+})
+
 it('splits data by month', () => {
     let data = [
         ['start date', 'amount', 'listing'],
