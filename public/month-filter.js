@@ -1,5 +1,4 @@
 $(function() {
-    console.log("hello, michael");
     $("body").on("click", ".month-filter span", function(){
         let month = $(this).attr("month");
         $(".month-data").hide();

@@ -79,7 +79,7 @@ class DataSplitter {
     splitByMonth(data = this.data) {
         let splitData = [];
 
-        let dataWithThresholdsSplit = this.splitThresholds(data);
+        let dataWithThresholdsSplit = this.splitThresholds(data)
 
         for (let i = 0; i < dataWithThresholdsSplit.length; i++) {
             let thisRow = dataWithThresholdsSplit[i];
@@ -151,26 +151,25 @@ class DataSplitter {
         lastDayOfThisMonth.setMonth(startDate.getMonth() + 1);
         lastDayOfThisMonth.setDate(0);
         let firstDayOfNextMonth = new Date(thisStay[this.titleIndexes.startDateIndex]);
-        firstDayOfNextMonth.setMonth(startDate.getMonth() == 11 ? 0 : startDate.getMonth() + 1);
         firstDayOfNextMonth.setDate(1);
+        firstDayOfNextMonth.setMonth(startDate.getMonth() === 11 ? 0 : startDate.getMonth() + 1);
+        firstDayOfNextMonth.setFullYear(startDate.getMonth() === 11 ? startDate.getFullYear() + 1 : startDate.getFullYear());
         let daysLeftInMonth = lastDayOfThisMonth.getDate() - startDate.getDate() + 1;
-        let daysBookedInFollowingMonth = parseInt(thisStay[this.titleIndexes.numberNightsIndex]) - daysLeftInMonth;
-        let totalPaid = parseInt(thisStay[this.titleIndexes.amountPaidIndex]);
-        let totalNights = parseInt(thisStay[this.titleIndexes.numberNightsIndex]);
+        let daysBookedInFollowingMonth = parseFloat(thisStay[this.titleIndexes.numberNightsIndex]) - daysLeftInMonth;
+        let totalPaid = parseFloat(thisStay[this.titleIndexes.amountPaidIndex].replace(/\$/g, ''));
+        let totalNights = parseFloat(thisStay[this.titleIndexes.numberNightsIndex]);
 
         //Currently doesn't handle the case where the stay crosses over two different months
         let firstSlice = thisStay.slice();
-        firstSlice[this.titleIndexes.numberNightsIndex] = daysLeftInMonth.toString();
-        firstSlice[this.titleIndexes.amountPaidIndex] = ((totalPaid * daysLeftInMonth) / totalNights).toString();
+        firstSlice[this.titleIndexes.numberNightsIndex] = daysLeftInMonth.toFixed(2);
+        firstSlice[this.titleIndexes.amountPaidIndex] = ((totalPaid * daysLeftInMonth) / totalNights).toFixed(2);
         let secondSlice = thisStay.slice();
         secondSlice[this.titleIndexes.startDateIndex] = ((firstDayOfNextMonth.getMonth() > 8) ? (firstDayOfNextMonth.getMonth() + 1) : ('0' + (firstDayOfNextMonth.getMonth() + 1))) + '/' + ((firstDayOfNextMonth.getDate() > 9) ? firstDayOfNextMonth.getDate() : ('0' + firstDayOfNextMonth.getDate())) + '/' + firstDayOfNextMonth.getFullYear();
-        secondSlice[this.titleIndexes.numberNightsIndex] = daysBookedInFollowingMonth.toString();
-        secondSlice[this.titleIndexes.amountPaidIndex] = ((totalPaid * daysBookedInFollowingMonth) / totalNights).toString();
+        secondSlice[this.titleIndexes.numberNightsIndex] = daysBookedInFollowingMonth.toFixed(2);
+        secondSlice[this.titleIndexes.amountPaidIndex] = ((totalPaid * daysBookedInFollowingMonth) / totalNights).toFixed(2);
 
         allStays.push(firstSlice);
         allStays.push(secondSlice);
-
-        console.log(allStays)
 
         return allStays;
     }

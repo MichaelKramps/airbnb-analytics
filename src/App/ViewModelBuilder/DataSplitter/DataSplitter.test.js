@@ -112,13 +112,13 @@ it('splits data by year with spillover', () => {
     ])
 
     expect(splitData[1]).toEqual([
-        ['01/01/2021', '5', '500', 'third listing'],
+        ['01/01/2021', '5', '500', 'second listing'],
         ['01/04/2021', '1', '100', 'third listing'],
         ['01/05/2021', '1', '100', 'first listing']
     ])
 
     expect(splitData[2]).toEqual([
-        ['01/06/2022', '100', 'second listing']
+        ['01/06/2022', '1', '100', 'second listing']
     ])
 })
 
@@ -181,7 +181,7 @@ it('splits data by month with spillover', () => {
     ])
 
     expect(splitData[1]).toEqual([
-        ['02/01/2020', '4', '400', 'third listing'],
+        ['02/01/2020', '4', '400', 'second listing'],
         ['02/04/2020', '1', '100', 'third listing']
     ])
 
