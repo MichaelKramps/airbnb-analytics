@@ -163,7 +163,7 @@ it('splits data by month with spillover', () => {
         ['start date', 'nights', 'amount', 'listing'],
         ['01/01/2020', '1', '100', 'first listing'],
         ['01/02/2020', '1', '100', 'second listing'],
-        ['01/30/2020', '6', '600', 'second listing'],
+        ['01/30/2020', '6', '$600', 'second listing'],
         ['02/04/2020', '1', '100', 'third listing'],
         ['03/05/2020', '1', '100', 'first listing'],
         ['03/06/2020', '1', '100', 'second listing'],
