@@ -427,3 +427,90 @@ it('Builds separate monthly totals for each listing (no spillover)', () => {
         ]
     )
 });
+
+it('Builds separate monthly totals for each listing (with spillover)', () => {
+    let data = [
+        ['start date', 'amount', 'nights', 'listing'],
+        ['01/01/2020', '300', '2', 'first listing'],
+        ['01/12/2020', '200', '3', 'first listing'],
+        ['02/13/2020', '500', '4', 'first listing'],
+        ['02/04/2020', '100', '5', 'first listing'],
+        ['01/05/2021', '100', '3', 'first listing'],
+        ['01/06/2020', '200', '5', 'second listing'],
+        ['01/16/2020', '200', '5', 'second listing'],
+        ['01/26/2020', '900', '9', 'second listing'],
+        ['09/06/2020', '200', '5', 'second listing'],
+    ]
+
+    let viewModelBuilder = new ViewModelBuilder(data);
+    let viewModel = viewModelBuilder.createViewModel();
+
+    expect(viewModel.overallStatsByMonthAndByListing).toEqual(
+        [
+            {
+                name: 'first listing',
+                months: [
+                    {
+                        year: 2020,
+                        month: 'January',
+                        amountPaid: '500.00',
+                        totalNights: 5,
+                        totalStays: 2,
+                        averageNightsPerGuest: '2.50',
+                        averagePricePerNight: '100.00'
+                    },
+                    {
+                        year: 2020,
+                        month: "February",
+                        amountPaid: '600.00',
+                        totalNights: 9,
+                        totalStays: 2,
+                        averageNightsPerGuest: '4.50',
+                        averagePricePerNight: '66.67'
+                    },
+                    {
+                        year: 2021,
+                        month: 'January',
+                        amountPaid: '100.00',
+                        totalNights: 3,
+                        totalStays: 1,
+                        averageNightsPerGuest: '3.00',
+                        averagePricePerNight: '33.33'
+                    }
+                ]
+            },
+            {
+                name: 'second listing',
+                months: [
+                    {
+                        year: 2020,
+                        month: 'January',
+                        amountPaid: '1000.00',
+                        totalNights: 16,
+                        totalStays: 3,
+                        averageNightsPerGuest: '5.33',
+                        averagePricePerNight: '62.50'
+                    },
+                    {
+                        year: 2020,
+                        month: 'February',
+                        amountPaid: '300.00',
+                        totalNights: 3,
+                        totalStays: 1,
+                        averageNightsPerGuest: '3.00',
+                        averagePricePerNight: '100.00'
+                    },
+                    {
+                        year: 2020,
+                        month: 'September',
+                        amountPaid: '200.00',
+                        totalNights: 5,
+                        totalStays: 1,
+                        averageNightsPerGuest: '5.00',
+                        averagePricePerNight: '40.00'
+                    },
+                ]
+            }
+        ]
+    )
+});
