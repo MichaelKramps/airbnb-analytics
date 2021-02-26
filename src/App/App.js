@@ -49,6 +49,7 @@ class App extends React.Component {
               <div>
                   <label>Upload a csv: </label>
                   <input type="file" name="airbnb-csv-upload" id="airbnb-csv-upload"
+                         accept=".csv" multiple
                          onChange={(e) => this.fileUploadHandler(e)}/>
               </div>
           )
