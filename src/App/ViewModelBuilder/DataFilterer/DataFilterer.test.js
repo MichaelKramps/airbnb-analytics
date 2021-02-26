@@ -68,3 +68,25 @@ it('filters out blank listing names', () => {
         ['reservation', 'awesome listing']
     ]);
 })
+
+it('filters out duplicate records and titles', () => {
+    let data = [
+        ['confirmation code', 'type', 'listing'],
+        ['HFG123', 'payout', ''],
+        ['HFG234', 'reservation', 'awesome listing'],
+        ['HFH123', 'payout', ' '],
+        ['confirmation code', 'type', 'listing'],
+        ['HFG234', 'reservation', 'awesome listing'],
+        ['HFG623', 'reservation', 'awesome listing']
+    ];
+
+    let filteredData = DataFilterer.filterOutDuplicates(data, TitleIndexer.getTitleIndexes(data[0]));
+
+    expect(filteredData).toEqual([
+        ['confirmation code', 'type', 'listing'],
+        ['HFG123', 'payout', ''],
+        ['HFG234', 'reservation', 'awesome listing'],
+        ['HFH123', 'payout', ' '],
+        ['HFG623', 'reservation', 'awesome listing']
+    ]);
+})

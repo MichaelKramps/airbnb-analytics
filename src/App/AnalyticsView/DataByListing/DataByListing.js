@@ -10,7 +10,7 @@ class DataByListing extends React.Component {
     render() {
         return(
             <div>
-                <h2>Overall Data Split By Listing</h2>
+                <h2>All Time Stats Split By Listing</h2>
                 <TotalStaysByListing totalStaysByListing={this.props.totalStaysByListing} />
                 <TotalNightsByListing totalNightsByListing={this.props.totalNightsByListing} />
                 <AverageNightsPerGuestByListing averageNightsPerGuestByListing={this.props.averageNightsPerGuestByListing} />

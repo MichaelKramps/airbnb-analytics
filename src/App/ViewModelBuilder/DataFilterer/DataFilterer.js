@@ -34,6 +34,22 @@ class DataFilterer{
         }
         return filteredData;
     }
+
+    static filterOutDuplicates(data, titleIndexes) {
+        console.log(data);
+        console.log(titleIndexes);
+        let filteredData = [];
+        let uniqueConfirmationCodes = [];
+        for(let i = 0; i < data.length; i++){
+            let thisRow = data[i];
+            let thisConfirmationCode = thisRow[titleIndexes.confirmationCodeIndex];
+            if (!uniqueConfirmationCodes.includes(thisConfirmationCode)){
+                uniqueConfirmationCodes.push(thisConfirmationCode);
+                filteredData.push(thisRow);
+            }
+        }
+        return filteredData;
+    }
 }
 
 export default DataFilterer;

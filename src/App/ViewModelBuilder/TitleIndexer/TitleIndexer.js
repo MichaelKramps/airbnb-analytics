@@ -4,7 +4,7 @@ class TitleIndexer{
         let titleIndexes = {};
 
         for (let i = 0; i < titleRow.length; i++){
-            let thisTitle = titleRow[i];
+            let thisTitle = titleRow[i].toLowerCase();
             switch(thisTitle.trim()){
                 case "start date":
                     titleIndexes.startDateIndex = i;

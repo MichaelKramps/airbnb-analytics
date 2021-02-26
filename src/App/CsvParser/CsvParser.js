@@ -21,7 +21,7 @@ class CsvParser {
         let newLine = fileData.toLowerCase().split("\n");
         for(let i = 0; i < newLine.length; i++) {
             let line = newLine[i];
-            let filterOutDoubleQuotes = line.replace(/\"([^" ]+),([^" ]+)\"/, "$1$2");
+            let filterOutDoubleQuotes = line.replace(/"([^" ]+),([^" ]+)"/, "$1$2");
             parseData.push(filterOutDoubleQuotes.split(","))
         }
 

@@ -3,6 +3,8 @@ import './App.css';
 import CsvParser from './CsvParser/CsvParser';
 import ViewModelBuilder from './ViewModelBuilder/ViewModelBuilder';
 import AnalyticsView from './AnalyticsView/AnalyticsView';
+import DataFilterer from "./ViewModelBuilder/DataFilterer/DataFilterer";
+import TitleIndexer from "./ViewModelBuilder/TitleIndexer/TitleIndexer";
 
 class App extends React.Component {
   // The contents of the csv can be stored in the state
@@ -10,7 +12,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fileUploaded: false
+      fileUploaded: false,
+      data: [],
+      viewModel: {},
       // state should basically mirror the view model
       // or at least provide the data necessary to build the view model
     };
@@ -21,8 +25,12 @@ class App extends React.Component {
   fileUploadHandler(e) {
       this.state.fileUploaded = true;
       this.csvParser.readCsvFile(e, (data) => {
-          let viewBuilder = new ViewModelBuilder(data);
-          this.setState(viewBuilder.createViewModel());
+          let combinedData = DataFilterer.filterOutDuplicates(this.state.data.concat(data), TitleIndexer.getTitleIndexes(data[0]));
+          console.log(combinedData)
+          this.state.data = combinedData;
+          let viewBuilder = new ViewModelBuilder(combinedData);
+          this.state.viewModel = viewBuilder.createViewModel();
+          this.setState(this.state.viewModel);
       });
   }
 
