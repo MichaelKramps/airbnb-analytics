@@ -1,31 +1,54 @@
 class CsvParser {
     constructor() {
-        this.readCsvFile.bind(this);
+        this.readCsvFiles.bind(this);
         this.parseCsvFile.bind(this);
     }
 
-    readCsvFile(e, callback){
-        let reader = new FileReader();
-        reader.addEventListener('load', (e) => {
-            callback(this.parseCsvFile(e.target.result)); // calling function for parse csv data
-        });
+    readCsvFiles(e, callback){
+        let readers = [];
         let uploadButton = document.getElementById('airbnb-csv-upload');
-        if(uploadButton) {
-            reader.readAsBinaryString(document.getElementById('airbnb-csv-upload').files[0]);
+
+        for(let i = 0;i < uploadButton.files.length;i++){
+            readers.push(this.readSingleFile(uploadButton.files[i]));
         }
+
+        Promise.all(readers).then((values) => {
+            callback(this.parseCsvFile(values));
+        });
     }
 
-    parseCsvFile(fileData) {
-        let parseData = [];
-
-        let newLine = fileData.toLowerCase().split("\n");
-        for(let i = 0; i < newLine.length; i++) {
-            let line = newLine[i];
-            let filterOutDoubleQuotes = line.replace(/"([^" ]+),([^" ]+)"/, "$1$2");
-            parseData.push(filterOutDoubleQuotes.split(","))
+    parseCsvFile(fileDataArray) {
+        let combinedRawLines = [];
+        for(let i = 0; i < fileDataArray.length; i++) {
+            let thisFile = fileDataArray[i];
+            let lines = thisFile.toLowerCase().split("\n");
+            combinedRawLines = combinedRawLines.concat(lines);
         }
 
-        return parseData;
+        let filteredData = [];
+        for(let i = 0; i < combinedRawLines.length; i++) {
+            let line = combinedRawLines[i];
+            let filterOutDoubleQuotes = line.replace(/"([^" ]+),([^" ]+)"/, "$1$2");
+            filteredData.push(filterOutDoubleQuotes.split(","))
+        }
+
+        return filteredData;
+    }
+
+    readSingleFile(file){
+        return new Promise(function(resolve,reject){
+            let fr = new FileReader();
+
+            fr.onload = function(){
+                resolve(fr.result);
+            };
+
+            fr.onerror = function(){
+                reject(fr);
+            };
+
+            fr.readAsText(file);
+        });
     }
 }
 

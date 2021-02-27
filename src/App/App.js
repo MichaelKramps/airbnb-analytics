@@ -24,9 +24,8 @@ class App extends React.Component {
 
   fileUploadHandler(e) {
       this.state.fileUploaded = true;
-      this.csvParser.readCsvFile(e, (data) => {
+      this.csvParser.readCsvFiles(e, (data) => {
           let combinedData = DataFilterer.filterOutDuplicates(this.state.data.concat(data), TitleIndexer.getTitleIndexes(data[0]));
-          console.log(combinedData)
           this.state.data = combinedData;
           let viewBuilder = new ViewModelBuilder(combinedData);
           this.state.viewModel = viewBuilder.createViewModel();
@@ -40,6 +39,7 @@ class App extends React.Component {
               <div>
                   <label>Upload a csv: </label>
                   <input type="file" name="airbnb-csv-upload" id="airbnb-csv-upload"
+                         accept=".csv" multiple
                          onChange={(e) => this.fileUploadHandler(e)}/>
                   <AnalyticsView {...this.state} />
               </div>

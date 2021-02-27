@@ -36,8 +36,6 @@ class DataFilterer{
     }
 
     static filterOutDuplicates(data, titleIndexes) {
-        console.log(data);
-        console.log(titleIndexes);
         let filteredData = [];
         let uniqueConfirmationCodes = [];
         for(let i = 0; i < data.length; i++){
