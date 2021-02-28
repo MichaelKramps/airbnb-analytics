@@ -29,6 +29,11 @@ code {
   padding: 0.5em 0;
 }
 
+.data-grouping > div:first-of-type {
+  background: #59cedb;
+  color: #ffffff;
+}
+
 .month-filter{
   display: flex;
   justify-content: space-between;

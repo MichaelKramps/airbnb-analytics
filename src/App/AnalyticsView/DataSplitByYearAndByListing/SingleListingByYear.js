@@ -5,10 +5,10 @@ class SingleListingByYear extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="data-grouping">
                 <h3>{this.props.listingData.name}</h3>
                 <div className={"static-data-container"}>
-                    <div>&nbsp;</div>
+                    <div>Year</div>
                     <div>Total Paid</div>
                     <div>Total Stays</div>
                     <div>Total Nights</div>

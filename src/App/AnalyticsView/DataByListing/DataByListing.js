@@ -15,7 +15,7 @@ class DataByListing extends React.Component {
             />
         );
         return(
-            <div>
+            <div className="data-grouping">
                 <h2>All Time Stats Split By Listing</h2>
                 <div className="static-data-container">
                     <div>Listing</div>
