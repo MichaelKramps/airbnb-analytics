@@ -95,7 +95,7 @@ it('splits data by year with spillover', () => {
         ['start date', 'nights', 'amount', 'listing'],
         ['01/01/2020', '1', '100', 'first listing'],
         ['01/02/2020', '1', '100', 'second listing'],
-        ['12/25/2020', '12', '1200', 'second listing'],
+        ['12/25/2020', '12', '1201.20', 'second listing'],
         ['01/04/2021', '1', '100', 'third listing'],
         ['01/05/2021', '1', '100', 'first listing'],
         ['01/06/2022', '1', '100', 'second listing']
@@ -108,11 +108,11 @@ it('splits data by year with spillover', () => {
     expect(splitData[0]).toEqual([
         ['01/01/2020', '1', '100', 'first listing'],
         ['01/02/2020', '1', '100', 'second listing'],
-        ['12/25/2020', '7', '700', 'second listing']
+        ['12/25/2020', '7', '700.70', 'second listing']
     ])
 
     expect(splitData[1]).toEqual([
-        ['01/01/2021', '5', '500', 'second listing'],
+        ['01/01/2021', '5', '500.50', 'second listing'],
         ['01/04/2021', '1', '100', 'third listing'],
         ['01/05/2021', '1', '100', 'first listing']
     ])
@@ -163,7 +163,7 @@ it('splits data by month with spillover', () => {
         ['start date', 'nights', 'amount', 'listing'],
         ['01/01/2020', '1', '100', 'first listing'],
         ['01/02/2020', '1', '100', 'second listing'],
-        ['01/30/2020', '6', '$600', 'second listing'],
+        ['01/30/2020', '6', '$600.60', 'second listing'],
         ['02/04/2020', '1', '100', 'third listing'],
         ['03/05/2020', '1', '100', 'first listing'],
         ['03/06/2020', '1', '100', 'second listing'],
@@ -177,11 +177,11 @@ it('splits data by month with spillover', () => {
     expect(splitData[0]).toEqual([
         ['01/01/2020', '1', '100', 'first listing'],
         ['01/02/2020', '1', '100', 'second listing'],
-        ['01/30/2020', '2', '200', 'second listing']
+        ['01/30/2020', '2', '200.20', 'second listing']
     ])
 
     expect(splitData[1]).toEqual([
-        ['02/01/2020', '4', '400', 'second listing'],
+        ['02/01/2020', '4', '400.40', 'second listing'],
         ['02/04/2020', '1', '100', 'third listing']
     ])
 

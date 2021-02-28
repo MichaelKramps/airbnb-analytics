@@ -161,11 +161,11 @@ class DataSplitter {
 
         //Currently doesn't handle the case where the stay crosses over two different months
         let firstSlice = thisStay.slice();
-        firstSlice[this.titleIndexes.numberNightsIndex] = daysLeftInMonth.toFixed(2);
+        firstSlice[this.titleIndexes.numberNightsIndex] = daysLeftInMonth.toFixed(0);
         firstSlice[this.titleIndexes.amountPaidIndex] = ((totalPaid * daysLeftInMonth) / totalNights).toFixed(2);
         let secondSlice = thisStay.slice();
         secondSlice[this.titleIndexes.startDateIndex] = ((firstDayOfNextMonth.getMonth() > 8) ? (firstDayOfNextMonth.getMonth() + 1) : ('0' + (firstDayOfNextMonth.getMonth() + 1))) + '/' + ((firstDayOfNextMonth.getDate() > 9) ? firstDayOfNextMonth.getDate() : ('0' + firstDayOfNextMonth.getDate())) + '/' + firstDayOfNextMonth.getFullYear();
-        secondSlice[this.titleIndexes.numberNightsIndex] = daysBookedInFollowingMonth.toFixed(2);
+        secondSlice[this.titleIndexes.numberNightsIndex] = daysBookedInFollowingMonth.toFixed(0);
         secondSlice[this.titleIndexes.amountPaidIndex] = ((totalPaid * daysBookedInFollowingMonth) / totalNights).toFixed(2);
 
         allStays.push(firstSlice);
