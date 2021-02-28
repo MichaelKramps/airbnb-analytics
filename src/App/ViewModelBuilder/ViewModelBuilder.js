@@ -1,15 +1,13 @@
 import DataSplitter from "./DataSplitter/DataSplitter";
 import DataAnalyzer from "./DataAnalyzer/DataAnalyzer";
-import TitleIndexer from "./TitleIndexer/TitleIndexer";
-import DataFilterer from "./DataFilterer/DataFilterer";
 
 class ViewModelBuilder {
-    constructor(data) {
+    constructor(data, titleIndexes) {
         this.data = data;
-        this.titleIndexes = TitleIndexer.getTitleIndexes(data[0]);
+        this.titleIndexes = titleIndexes;
 
-        this.dataSplitter = new DataSplitter(data);
-        this.dataAnalyzer = new DataAnalyzer(data);
+        this.dataSplitter = new DataSplitter(data, titleIndexes);
+        this.dataAnalyzer = new DataAnalyzer(data, titleIndexes);
 
         this.viewModel = {};
     }
@@ -27,9 +25,7 @@ class ViewModelBuilder {
 
     addTotalStaysByListing() {
         this.viewModel.totalStaysByListing = [];
-        let filterBlankNames = DataFilterer.filterOutBlankListings(DataFilterer.filterOutTitleRow(this.data), this.titleIndexes);
-        let filterPayouts = DataFilterer.filterOutPayouts(filterBlankNames, this.titleIndexes)
-        let dataSplitByListingName = this.dataSplitter.splitByListingName(filterPayouts);
+        let dataSplitByListingName = this.dataSplitter.splitByListingName(this.data);
 
         for (let i = 0; i < dataSplitByListingName.length; i++) {
             let thisListing = {};
@@ -45,9 +41,7 @@ class ViewModelBuilder {
 
     addTotalNightsByListing() {
         this.viewModel.totalNightsByListing = [];
-        let filterBlankNames = DataFilterer.filterOutBlankListings(DataFilterer.filterOutTitleRow(this.data), this.titleIndexes);
-        let filterPayouts = DataFilterer.filterOutPayouts(filterBlankNames, this.titleIndexes)
-        let dataSplitByListingName = this.dataSplitter.splitByListingName(filterPayouts);
+        let dataSplitByListingName = this.dataSplitter.splitByListingName(this.data);
 
         for (let i = 0; i < dataSplitByListingName.length; i++) {
             let thisListing = {};
@@ -63,9 +57,7 @@ class ViewModelBuilder {
 
     addAmountPaidByListing() {
         this.viewModel.amountPaidByListing = [];
-        let filterBlankNames = DataFilterer.filterOutBlankListings(DataFilterer.filterOutTitleRow(this.data), this.titleIndexes);
-        let filterPayouts = DataFilterer.filterOutPayouts(filterBlankNames, this.titleIndexes);
-        let dataSplitByListingName = this.dataSplitter.splitByListingName(filterPayouts);
+        let dataSplitByListingName = this.dataSplitter.splitByListingName(this.data);
 
         for (let i = 0; i < dataSplitByListingName.length; i++) {
             let thisListing = {};
@@ -116,9 +108,7 @@ class ViewModelBuilder {
     addOverallStatsSplitByYearAndByListing() {
         this.viewModel.overallStatsByYearAndByListing = [];
 
-        let filterBlankNames = DataFilterer.filterOutBlankListings(DataFilterer.filterOutTitleRow(this.data), this.titleIndexes);
-        let filterPayouts = DataFilterer.filterOutPayouts(filterBlankNames, this.titleIndexes);
-        let dataSplitByListingName = this.dataSplitter.splitByListingName(filterPayouts);
+        let dataSplitByListingName = this.dataSplitter.splitByListingName(this.data);
 
         for (let i = 0; i < dataSplitByListingName.length; i++) {
             let thisListing = {};
@@ -150,9 +140,7 @@ class ViewModelBuilder {
     addOverallStatsSplitByMonthAndByListing() {
         this.viewModel.overallStatsByMonthAndByListing = [];
 
-        let filterBlankNames = DataFilterer.filterOutBlankListings(DataFilterer.filterOutTitleRow(this.data), this.titleIndexes);
-        let filterPayouts = DataFilterer.filterOutPayouts(filterBlankNames, this.titleIndexes);
-        let dataSplitByListingName = this.dataSplitter.splitByListingName(filterPayouts);
+        let dataSplitByListingName = this.dataSplitter.splitByListingName(this.data);
 
         for (let i = 0; i < dataSplitByListingName.length; i++) {
             let thisListing = {};

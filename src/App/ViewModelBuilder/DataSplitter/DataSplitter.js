@@ -1,9 +1,8 @@
-import TitleIndexer from "../TitleIndexer/TitleIndexer";
 import DataFilterer from "../DataFilterer/DataFilterer";
 
 class DataSplitter {
-    constructor(data) {
-        this.titleIndexes = TitleIndexer.getTitleIndexes(data[0]);
+    constructor(data, titleIndexes) {
+        this.titleIndexes = titleIndexes;
         this.data = DataFilterer.filterOutTitleRow(data);
     }
 

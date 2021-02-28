@@ -25,9 +25,10 @@ class App extends React.Component {
   fileUploadHandler(e) {
       this.state.fileUploaded = true;
       this.csvParser.readCsvFiles(e, (data) => {
-          let combinedData = DataFilterer.filterOutDuplicates(this.state.data.concat(data), TitleIndexer.getTitleIndexes(data[0]));
+          let titleIndexes = TitleIndexer.getTitleIndexes(data[0]);
+          let combinedData = DataFilterer.filterOutAllEmptyData(this.state.data.concat(data), titleIndexes);
           this.state.data = combinedData;
-          let viewBuilder = new ViewModelBuilder(combinedData);
+          let viewBuilder = new ViewModelBuilder(combinedData, titleIndexes);
           this.state.viewModel = viewBuilder.createViewModel();
           this.setState(this.state.viewModel);
       });
