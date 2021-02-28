@@ -7,7 +7,7 @@ class SingleListingByYear extends React.Component {
         return (
             <div>
                 <h3>{this.props.listingData.name}</h3>
-                <div className={"staticDataContainer"}>
+                <div className={"static-data-container"}>
                     <div>&nbsp;</div>
                     <div>Total Paid</div>
                     <div>Total Stays</div>

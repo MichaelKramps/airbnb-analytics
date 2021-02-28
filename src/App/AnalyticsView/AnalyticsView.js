@@ -8,13 +8,7 @@ class AnalyticsView extends React.Component {
     render() {
         return(
             <React.Fragment>
-                <DataByListing
-                    totalStaysByListing={this.props.totalStaysByListing}
-                    totalNightsByListing={this.props.totalNightsByListing}
-                    averageNightsPerGuestByListing={this.props.averageNightsPerGuestByListing}
-                    amountPaidByListing={this.props.amountPaidByListing}
-                    averagePricePerNightByListing={this.props.averagePricePerNightByListing} />
-
+                <DataByListing dataByListing={this.props.totalStatsByListing} />
                 <DataByYearAndByListing dataSplitByYear={this.props.overallStatsByYearAndByListing} />
                 <DataByMonthAndByListing dataSplitByMonth={this.props.overallStatsByMonthAndByListing} />
             </React.Fragment>

@@ -7,7 +7,7 @@ class TotalNightsByListing extends React.Component {
             <div>{listing.totalNights} nights</div>
         );
         return (
-            <div className={"staticDataContainer"}>
+            <div className={"static-data-container"}>
                 <div>Number of Nights</div>
                 {nightsByListing}
             </div>

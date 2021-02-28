@@ -7,7 +7,7 @@ class AmountPaidByListing extends React.Component {
             <div>${listing.amountPaid}</div>
         );
         return (
-            <div className={"staticDataContainer"}>
+            <div className={"static-data-container"}>
                 <div>Total Paid</div>
                 {paidOutByListing}
             </div>

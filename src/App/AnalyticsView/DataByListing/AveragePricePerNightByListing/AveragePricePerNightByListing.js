@@ -7,7 +7,7 @@ class AveragePricePerNightByListing extends React.Component {
             <div>${listing.averagePricePerNight}</div>
         );
         return (
-            <div className={"staticDataContainer"}>
+            <div className={"static-data-container"}>
                 <div>Average Price Per Night</div>
                 {averagePricePerNightByListing}
             </div>

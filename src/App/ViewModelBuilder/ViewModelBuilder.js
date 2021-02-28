@@ -19,29 +19,32 @@ class ViewModelBuilder {
     }
 
     createViewModel() {
-        this.addTotalStaysByListing();
-        this.addTotalNightsByListing();
-        this.addAmountPaidByListing();
-        this.addAveragePricePerNightByListing();
-        this.addAverageNightsPerGuestByListing();
+        this.addTotalStatsByListing();
+        // this.addTotalNightsByListing();
+        // this.addAmountPaidByListing();
+        // this.addAveragePricePerNightByListing();
+        // this.addAverageNightsPerGuestByListing();
         this.addOverallStatsSplitByYearAndByListing();
         this.addOverallStatsSplitByMonthAndByListing();
         return this.viewModel;
     }
 
-    addTotalStaysByListing() {
-        this.viewModel.totalStaysByListing = [];
+    addTotalStatsByListing() {
+        this.viewModel.totalStatsByListing = [];
         let dataSplitByListingName = this.dataSplitter.splitByListingName(this.data);
 
         for (let i = 0; i < dataSplitByListingName.length; i++) {
             let thisListing = {};
-            let thisData = dataSplitByListingName[i];
+            let thisListingsData = dataSplitByListingName[i];
 
-            thisListing.name = thisData[0][this.titleIndexes.listingNameIndex];
+            thisListing.name = thisListingsData[0][this.titleIndexes.listingNameIndex];
+            thisListing.totalStays = this.dataAnalyzer.getNumberOfGuests(thisListingsData);
+            thisListing.totalNights = this.dataAnalyzer.getNumberOfNights(thisListingsData);
+            thisListing.averageNightsPerGuest = (thisListing.totalNights / thisListing.totalStays).toFixed(2);
+            thisListing.totalPaid = this.dataAnalyzer.getAmountPaid(thisListingsData).toFixed(2);
+            thisListing.averagePricePerNight = (thisListing.totalPaid / thisListing.totalNights).toFixed(2);
 
-            thisListing.totalStays = this.dataAnalyzer.getNumberOfGuests(thisData);
-
-            this.viewModel.totalStaysByListing.push(thisListing);
+            this.viewModel.totalStatsByListing.push(thisListing);
         }
     }
 

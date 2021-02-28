@@ -11,11 +11,11 @@ class TotalStaysByListing extends React.Component {
         );
         return (
             <React.Fragment>
-                <div className={"staticDataContainer"}>
+                <div className={"static-data-container"}>
                     <div>Category</div>
                     {listingNames}
                 </div>
-                <div className={"staticDataContainer"}>
+                <div className={"static-data-container"}>
                     <div>Number of Stays</div>
                     {staysByListing}
                 </div>
