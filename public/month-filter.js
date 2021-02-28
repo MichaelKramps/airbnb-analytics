@@ -1,12 +1,10 @@
 $(function() {
-    $("body").on("click", ".month-filter span", function(){
-        let month = $(this).attr("month");
-        $(".month-data").hide();
-        $(".month-data").each(function(){
-            let thisMonth = $(this).attr("month");
-            if (thisMonth === month){
-                $(this).show();
-            }
-        });
+    $("body").on("click", ".filter > div", function(){
+        if (!$(this).hasClass("active")) {
+            $(".active").removeClass("active");
+            $(this).addClass("active");
+            let filters = $(this).attr("filters");
+            $("div[filterGroup='" + filters + "']").addClass("active");
+        }
     })
 });

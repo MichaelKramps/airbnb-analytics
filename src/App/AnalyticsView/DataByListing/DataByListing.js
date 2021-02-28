@@ -15,8 +15,7 @@ class DataByListing extends React.Component {
             />
         );
         return(
-            <div className="data-grouping">
-                <h2>All Time Stats Split By Listing</h2>
+            <div className="main-group active data-grouping" filterGroup="all-time">
                 <div className="static-data-container">
                     <div>Listing</div>
                     <div>Total Paid</div>

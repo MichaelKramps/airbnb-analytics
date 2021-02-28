@@ -8,8 +8,7 @@ class DataByYearAndByListing extends React.Component {
             <SingleListingByYear listingData={listing} />
         );
         return (
-            <div>
-                <h2>Statistics Split By Year</h2>
+            <div className="main-group" filterGroup="by-year">
                 {dataSplitByYear}
             </div>
         )

@@ -4,7 +4,7 @@ class SingleMonthOfListing extends React.Component {
 
     render() {
         return (
-            <div year={this.props.year} month={this.props.month} className={"static-data-container month-data"}>
+            <div filterGroup={this.props.month} className={"static-data-container month-data"}>
                 <div>{this.props.year} {this.props.month}</div>
                 <div>{this.props.amountPaid}</div>
                 <div>{this.props.totalStays}</div>

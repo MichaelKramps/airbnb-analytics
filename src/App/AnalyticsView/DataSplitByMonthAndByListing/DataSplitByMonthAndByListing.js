@@ -8,21 +8,20 @@ class DataByMonthAndByListing extends React.Component {
             <SingleListingByMonth listingData={listing} />
         );
         return (
-            <div>
-                <h2>Statistics Split By Month</h2>
-                <div className={"month-filter"}>
-                    <span month="January">January</span>
-                    <span month="February">February</span>
-                    <span month="March">March</span>
-                    <span month="April">April</span>
-                    <span month="May">May</span>
-                    <span month="June">June</span>
-                    <span month="July">July</span>
-                    <span month="August">August</span>
-                    <span month="September">September</span>
-                    <span month="October">October</span>
-                    <span month="November">November</span>
-                    <span month="December">December</span>
+            <div className="main-group" filterGroup="by-month">
+                <div className="filter">
+                    <div month="January" filters="january">January</div>
+                    <div month="February" filters="january">February</div>
+                    <div month="March" filters="january">March</div>
+                    <div month="April" filters="january">April</div>
+                    <div month="May" filters="january">May</div>
+                    <div month="June" filters="january">June</div>
+                    <div month="July" filters="january">July</div>
+                    <div month="August" filters="january">August</div>
+                    <div month="September" filters="january">September</div>
+                    <div month="October" filters="january">October</div>
+                    <div month="November" filters="january">November</div>
+                    <div month="December" filters="january">December</div>
                 </div>
                 {dataSplitByMonth}
             </div>
