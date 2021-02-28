@@ -11,7 +11,7 @@ it('Builds number of stays totals for each listing', () => {
         ['01/06/2020', '100', 'second listing']
     ]
 
-    let viewModelBuilder = new ViewModelBuilder(data);
+    let viewModelBuilder = ViewModelBuilder.buildTestViewModelBuilder(data);
     let viewModel = viewModelBuilder.createViewModel();
 
     expect(viewModel.totalStaysByListing).toEqual(
@@ -32,34 +32,6 @@ it('Builds number of stays totals for each listing', () => {
     )
 });
 
-it('excludes blank listing names when building total stays', () => {
-    let data = [
-        ['start date', 'amount', 'listing'],
-        ['01/01/2020', '100', 'first listing'],
-        ['01/02/2020', '100', ''],
-        ['01/03/2020', '100', '  '],
-        ['01/04/2020', '100', 'third listing'],
-        ['01/05/2020', '100', 'first listing'],
-        ['01/06/2020', '100', null]
-    ]
-
-    let viewModelBuilder = new ViewModelBuilder(data);
-    let viewModel = viewModelBuilder.createViewModel();
-
-    expect(viewModel.totalStaysByListing).toEqual(
-        [
-            {
-                name: 'first listing',
-                totalStays: 2
-            },
-            {
-                name: 'third listing',
-                totalStays: 1
-            }
-        ]
-    )
-});
-
 it('Builds number of nights totals for each listing', () => {
     let data = [
         ['start date', 'nights', 'listing'],
@@ -71,7 +43,7 @@ it('Builds number of nights totals for each listing', () => {
         ['01/06/2020', '2', 'second listing']
     ]
 
-    let viewModelBuilder = new ViewModelBuilder(data);
+    let viewModelBuilder = ViewModelBuilder.buildTestViewModelBuilder(data);
     let viewModel = viewModelBuilder.createViewModel();
 
     expect(viewModel.totalNightsByListing).toEqual(
@@ -103,7 +75,7 @@ it('Builds paid out totals for each listing', () => {
         ['01/06/2020', '200', 'second listing']
     ]
 
-    let viewModelBuilder = new ViewModelBuilder(data);
+    let viewModelBuilder = ViewModelBuilder.buildTestViewModelBuilder(data);
     let viewModel = viewModelBuilder.createViewModel();
 
     expect(viewModel.amountPaidByListing).toEqual(
@@ -135,7 +107,7 @@ it('Builds paid out totals for each listing when dollar sign and decimals are pr
         ['01/06/2020', '$200.23', 'second listing']
     ]
 
-    let viewModelBuilder = new ViewModelBuilder(data);
+    let viewModelBuilder = ViewModelBuilder.buildTestViewModelBuilder(data);
     let viewModel = viewModelBuilder.createViewModel();
 
     expect(viewModel.amountPaidByListing).toEqual(
@@ -167,7 +139,7 @@ it('Builds average price per night for each listing', () => {
         ['01/06/2020', '200', '3', 'second listing']
     ]
 
-    let viewModelBuilder = new ViewModelBuilder(data);
+    let viewModelBuilder = ViewModelBuilder.buildTestViewModelBuilder(data);
     let viewModel = viewModelBuilder.createViewModel();
 
     expect(viewModel.averagePricePerNightByListing).toEqual(
@@ -199,7 +171,7 @@ it('Builds average nights per guest for each listing', () => {
         ['01/06/2020', '200', '5', 'second listing']
     ]
 
-    let viewModelBuilder = new ViewModelBuilder(data);
+    let viewModelBuilder = ViewModelBuilder.buildTestViewModelBuilder(data);
     let viewModel = viewModelBuilder.createViewModel();
 
     expect(viewModel.averageNightsPerGuestByListing).toEqual(
@@ -234,7 +206,7 @@ it('Builds separate yearly totals for each listing (no spillover)', () => {
         ['09/06/2021', '200', '5', 'second listing'],
     ]
 
-    let viewModelBuilder = new ViewModelBuilder(data);
+    let viewModelBuilder = ViewModelBuilder.buildTestViewModelBuilder(data);
     let viewModel = viewModelBuilder.createViewModel();
 
     expect(viewModel.overallStatsByYearAndByListing).toEqual(
@@ -299,7 +271,7 @@ it('Builds separate yearly totals for each listing (with spillover)', () => {
         ['09/06/2021', '200', '5', 'second listing'],
     ]
 
-    let viewModelBuilder = new ViewModelBuilder(data);
+    let viewModelBuilder = ViewModelBuilder.buildTestViewModelBuilder(data);
     let viewModel = viewModelBuilder.createViewModel();
 
     expect(viewModel.overallStatsByYearAndByListing).toEqual(
@@ -364,7 +336,7 @@ it('Builds separate monthly totals for each listing (no spillover)', () => {
         ['09/06/2020', '200', '5', 'second listing'],
     ]
 
-    let viewModelBuilder = new ViewModelBuilder(data);
+    let viewModelBuilder = ViewModelBuilder.buildTestViewModelBuilder(data);
     let viewModel = viewModelBuilder.createViewModel();
 
     expect(viewModel.overallStatsByMonthAndByListing).toEqual(
@@ -442,7 +414,7 @@ it('Builds separate monthly totals for each listing (with spillover)', () => {
         ['09/06/2020', '200', '5', 'second listing'],
     ]
 
-    let viewModelBuilder = new ViewModelBuilder(data);
+    let viewModelBuilder = ViewModelBuilder.buildTestViewModelBuilder(data);
     let viewModel = viewModelBuilder.createViewModel();
 
     expect(viewModel.overallStatsByMonthAndByListing).toEqual(

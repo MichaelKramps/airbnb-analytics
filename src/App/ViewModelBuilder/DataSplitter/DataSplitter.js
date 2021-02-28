@@ -1,9 +1,14 @@
 import DataFilterer from "../DataFilterer/DataFilterer";
+import TitleIndexer from "../TitleIndexer/TitleIndexer";
 
 class DataSplitter {
     constructor(data, titleIndexes) {
         this.titleIndexes = titleIndexes;
         this.data = DataFilterer.filterOutTitleRow(data);
+    }
+
+    static buildTestDataSplitter(data) {
+        return new DataSplitter(data, TitleIndexer.getTitleIndexes(data[0]));
     }
 
     splitByCustomStartDate(splitDate) {

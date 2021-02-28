@@ -1,5 +1,7 @@
 import DataSplitter from "./DataSplitter/DataSplitter";
 import DataAnalyzer from "./DataAnalyzer/DataAnalyzer";
+import DataFilterer from "./DataFilterer/DataFilterer";
+import TitleIndexer from "./TitleIndexer/TitleIndexer";
 
 class ViewModelBuilder {
     constructor(data, titleIndexes) {
@@ -10,6 +12,10 @@ class ViewModelBuilder {
         this.dataAnalyzer = new DataAnalyzer(data, titleIndexes);
 
         this.viewModel = {};
+    }
+
+    static buildTestViewModelBuilder(data) {
+        return new ViewModelBuilder(DataFilterer.filterOutTitleRow(data), TitleIndexer.getTitleIndexes(data[0]));
     }
 
     createViewModel() {

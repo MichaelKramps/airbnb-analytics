@@ -9,7 +9,7 @@ it('Adds up total payout amount', () => {
         ["abc", "100"]
     ];
 
-    let dataAnalyzer = new DataAnalyzer(data);
+    let dataAnalyzer = DataAnalyzer.buildTestDataAnalyzer(data);
     let totalPayout = dataAnalyzer.getTotalPayout();
 
     expect(totalPayout).toBe(1468);
@@ -24,7 +24,7 @@ it('Adds up total number of nights', () => {
         ["abc", "100", '2']
     ];
 
-    let dataAnalyzer = new DataAnalyzer(data);
+    let dataAnalyzer = DataAnalyzer.buildTestDataAnalyzer(data);
     let numberOfNights = dataAnalyzer.getNumberOfNights();
 
     expect(numberOfNights).toBe(12);
@@ -39,7 +39,7 @@ it('Adds up total number of guests', () => {
         ["abc", "100"]
     ];
 
-    let dataAnalyzer = new DataAnalyzer(data);
+    let dataAnalyzer = DataAnalyzer.buildTestDataAnalyzer(data);
     let numberOfGuests = dataAnalyzer.getNumberOfGuests();
 
     expect(numberOfGuests).toBe(4);
@@ -54,7 +54,7 @@ it('Adds up total number of guests of passed in data, instead of data from const
         ["abc", "100"]
     ];
 
-    let dataAnalyzer = new DataAnalyzer(data);
+    let dataAnalyzer = DataAnalyzer.buildTestDataAnalyzer(data);
 
     let splitData = [
         ["abc", "123"],
@@ -74,7 +74,7 @@ it('adds up total paid out', () => {
         ["abc", "100"]
     ];
 
-    let dataAnalyzer = new DataAnalyzer(data);
+    let dataAnalyzer = DataAnalyzer.buildTestDataAnalyzer(data);
 
     let totalPayout = dataAnalyzer.getAmountPaid();
 

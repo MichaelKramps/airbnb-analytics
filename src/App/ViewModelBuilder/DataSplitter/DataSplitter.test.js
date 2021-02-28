@@ -11,7 +11,7 @@ it('splits data by start date', () => {
         ['01/06/2020', '100']
     ]
 
-    let dataSplitter = new DataSplitter(data);
+    let dataSplitter = DataSplitter.buildTestDataSplitter(data);
 
     let splitData = dataSplitter.splitByCustomStartDate('01/03/2020');
 
@@ -39,7 +39,7 @@ it('splits data by listing name', () => {
         ['01/06/2020', '100', 'second listing']
     ]
 
-    let dataSplitter = new DataSplitter(data);
+    let dataSplitter = DataSplitter.buildTestDataSplitter(data);
 
     let splitData = dataSplitter.splitByListingName();
 
@@ -70,7 +70,7 @@ it('splits data by year', () => {
         ['01/06/2022', '1', '100', 'second listing']
     ]
 
-    let dataSplitter = new DataSplitter(data);
+    let dataSplitter = DataSplitter.buildTestDataSplitter(data);
 
     let splitData = dataSplitter.splitByYear();
 
@@ -101,7 +101,7 @@ it('splits data by year with spillover', () => {
         ['01/06/2022', '1', '100', 'second listing']
     ]
 
-    let dataSplitter = new DataSplitter(data);
+    let dataSplitter = DataSplitter.buildTestDataSplitter(data);
 
     let splitData = dataSplitter.splitByYear();
 
@@ -134,7 +134,7 @@ it('splits data by month', () => {
         ['03/07/2021', '1', '100', 'second listing']
     ]
 
-    let dataSplitter = new DataSplitter(data);
+    let dataSplitter = DataSplitter.buildTestDataSplitter(data);
 
     let splitData = dataSplitter.splitByMonth();
 
@@ -170,7 +170,7 @@ it('splits data by month with spillover', () => {
         ['03/07/2021', '1', '100', 'second listing']
     ]
 
-    let dataSplitter = new DataSplitter(data);
+    let dataSplitter = DataSplitter.buildTestDataSplitter(data);
 
     let splitData = dataSplitter.splitByMonth();
 
