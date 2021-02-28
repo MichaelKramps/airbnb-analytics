@@ -37,7 +37,7 @@ class App extends React.Component {
       if (this.state.fileUploaded){
           return(
               <div>
-                  <label>Upload a csv: </label>
+                  <label>Upload your Airbnb csv files: </label>
                   <input type="file" name="airbnb-csv-upload" id="airbnb-csv-upload"
                          accept=".csv" multiple
                          onChange={(e) => this.fileUploadHandler(e)}/>
@@ -47,7 +47,7 @@ class App extends React.Component {
       } else {
           return (
               <div>
-                  <label>Upload a csv: </label>
+                  <label>Upload your Airbnb csv files: </label>
                   <input type="file" name="airbnb-csv-upload" id="airbnb-csv-upload"
                          accept=".csv" multiple
                          onChange={(e) => this.fileUploadHandler(e)}/>

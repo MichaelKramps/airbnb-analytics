@@ -1,37 +1,19 @@
 class DataFilterer{
-    static filterOutTitleRow(data){
-        let firstRow = data[0]
-        let titleRegex = /\d+/;
-        for(let i = 0; i < firstRow.length; i++){
-            if (titleRegex.test(firstRow[i])){
-                return data;
-            }
-        }
-        return data.slice(1);
-    }
+    static filterOutAllEmptyData(data, titleIndexes) {
+        let removeDuplicates = this.filterOutDuplicates(data, titleIndexes);
 
-    static filterOutPayouts(data, titleIndexes) {
         let filteredData = [];
-        for(let i = 0; i < data.length; i++){
-            let thisRow = data[i];
-            let thisType = thisRow[titleIndexes.rowTypeIndex];
-            if (thisType !== 'payout'){
+
+        for(let row = 0; row < removeDuplicates.length; row++){
+            let thisRow = removeDuplicates[row];
+            if (this.notBlankRow(thisRow[titleIndexes.listingNameIndex]) &&
+                this.notTitleRow(thisRow) &&
+                this.notPayoutRow(thisRow))
+            {
                 filteredData.push(thisRow);
             }
         }
-        return filteredData;
-    }
 
-    static filterOutBlankListings(data, titleIndexes) {
-        let filteredData = [];
-        for(let i = 0; i < data.length; i++){
-            let thisRow = data[i];
-            let thisListingName = thisRow[titleIndexes.listingNameIndex];
-            let listingNameRegex = /^\s*$/;
-            if (thisListingName !== null && thisListingName !== undefined && !listingNameRegex.test(thisListingName)){
-                filteredData.push(thisRow);
-            }
-        }
         return filteredData;
     }
 
@@ -47,6 +29,63 @@ class DataFilterer{
             }
         }
         return filteredData;
+    }
+
+    static filterOutTitleRow(data){
+        let firstRow = data[0]
+        if (this.notTitleRow(firstRow)){
+            return data;
+        }
+        return data.slice(1);
+    }
+
+    static notTitleRow(row) {
+        let titleRegex = /\d+/;
+        for(let column = 0; column < row.length; column++){
+            if (titleRegex.test(row[column])){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    static filterOutPayouts(data, titleIndexes) {
+        let filteredData = [];
+        for(let i = 0; i < data.length; i++){
+            let thisRow = data[i];
+            let thisType = thisRow[titleIndexes.rowTypeIndex];
+            if (this.notPayoutRow(thisType)){
+                filteredData.push(thisRow);
+            }
+        }
+        return filteredData;
+    }
+
+    static notPayoutRow(rowType) {
+        if (rowType !== 'payout'){
+            return true;
+        }
+        return false;
+    }
+
+    static filterOutBlankListings(data, titleIndexes) {
+        let filteredData = [];
+        for(let i = 0; i < data.length; i++){
+            let thisRow = data[i];
+            let thisListingName = thisRow[titleIndexes.listingNameIndex];
+            if (this.notBlankRow(thisListingName)){
+                filteredData.push(thisRow);
+            }
+        }
+        return filteredData;
+    }
+
+    static notBlankRow(listingName) {
+        let listingNameRegex = /^\s*$/;
+        if (listingName !== null && listingName !== undefined && !listingNameRegex.test(listingName)){
+            return true;
+        }
+        return false;
     }
 }
 
