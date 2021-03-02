@@ -50,10 +50,14 @@ code {
   color: #ffffff;
 }
 
-.main-group {
+.main-group, .month-data {
   display: none;
 }
 
 .main-group.active {
   display: block;
+}
+
+.month-data.active {
+  display: flex;
 }

@@ -10,18 +10,18 @@ class DataByMonthAndByListing extends React.Component {
         return (
             <div className="main-group" filterGroup="by-month">
                 <div className="filter">
-                    <div month="January" filters="january">January</div>
-                    <div month="February" filters="january">February</div>
-                    <div month="March" filters="january">March</div>
-                    <div month="April" filters="january">April</div>
-                    <div month="May" filters="january">May</div>
-                    <div month="June" filters="january">June</div>
-                    <div month="July" filters="january">July</div>
-                    <div month="August" filters="january">August</div>
-                    <div month="September" filters="january">September</div>
-                    <div month="October" filters="january">October</div>
-                    <div month="November" filters="january">November</div>
-                    <div month="December" filters="january">December</div>
+                    <div month="January" filters="January">January</div>
+                    <div month="February" filters="February">February</div>
+                    <div month="March" filters="March">March</div>
+                    <div month="April" filters="April">April</div>
+                    <div month="May" filters="May">May</div>
+                    <div month="June" filters="June">June</div>
+                    <div month="July" filters="July">July</div>
+                    <div month="August" filters="August">August</div>
+                    <div month="September" filters="September">September</div>
+                    <div month="October" filters="October">October</div>
+                    <div month="November" filters="November">November</div>
+                    <div month="December" filters="December">December</div>
                 </div>
                 {dataSplitByMonth}
             </div>
