@@ -46,7 +46,7 @@ code {
 }
 
 .filter > .active {
-  background-color: blue;
+  background-color: #36454f;
   color: #ffffff;
 }
 

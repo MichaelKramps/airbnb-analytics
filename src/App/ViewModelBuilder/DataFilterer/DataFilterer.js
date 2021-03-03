@@ -8,7 +8,8 @@ class DataFilterer{
             let thisRow = removeDuplicates[row];
             if (this.notBlankRow(thisRow[titleIndexes.listingNameIndex]) &&
                 this.notTitleRow(thisRow) &&
-                this.notPayoutRow(thisRow))
+                this.notPayoutRow(thisRow) &&
+                this.notCancelled(thisRow[titleIndexes.statusIndex]))
             {
                 filteredData.push(thisRow);
             }
@@ -83,6 +84,25 @@ class DataFilterer{
     static notBlankRow(listingName) {
         let listingNameRegex = /^\s*$/;
         if (listingName !== null && listingName !== undefined && !listingNameRegex.test(listingName)){
+            return true;
+        }
+        return false;
+    }
+
+    static filterOutCancellations(data, titleIndexes) {
+        let filteredData = [];
+        for (let i = 0; i < data.length; i++) {
+            let thisRow = data[i];
+            let thisStatus = thisRow[titleIndexes.statusIndex];
+            if(this.notCancelled(thisStatus)){
+                filteredData.push(thisRow);
+            }
+        }
+        return filteredData;
+    }
+
+    static notCancelled(status) {
+        if (status != "canceled"){
             return true;
         }
         return false;

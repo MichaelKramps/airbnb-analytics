@@ -14,6 +14,7 @@ class AnalyticsView extends React.Component {
                     <div filters="by-year">By Year</div>
                     <div filters="by-month">By Month</div>
                 </div>
+                <p>*Some data is automatically removed, including bookings that were cancelled</p>
                 <DataByListing dataByListing={this.props.totalStatsByListing} />
                 <DataByYearAndByListing dataSplitByYear={this.props.overallStatsByYearAndByListing} />
                 <DataByMonthAndByListing dataSplitByMonth={this.props.overallStatsByMonthAndByListing} />

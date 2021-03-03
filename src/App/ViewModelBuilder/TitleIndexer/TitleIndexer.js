@@ -18,6 +18,9 @@ class TitleIndexer{
                 case "date":
                     titleIndexes.paymentDateIndex = i;
                     break;
+                case "status":
+                    titleIndexes.statusIndex = i;
+                    break;
                 case "nights":
                 case "# of nights":
                     titleIndexes.numberNightsIndex = i;

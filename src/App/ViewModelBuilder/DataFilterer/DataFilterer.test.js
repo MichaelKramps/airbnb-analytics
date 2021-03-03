@@ -90,3 +90,20 @@ it('filters out duplicate records and titles', () => {
         ['HFG623', 'reservation', 'awesome listing']
     ]);
 })
+
+it('filters out canceled bookings', () => {
+    let data = [
+        ['status', 'type', 'listing'],
+        ['confirmed', 'reservation', 'awesome listing'],
+        ['canceled', 'type', 'listing'],
+        ['confirmed', 'reservation', 'awesome listing'],
+        ['canceled', 'reservation', 'awesome listing']
+    ];
+
+    let filteredData = DataFilterer.filterOutCancellations(DataFilterer.filterOutTitleRow(data), TitleIndexer.getTitleIndexes(data[0]));
+
+    expect(filteredData).toEqual([
+        ['confirmed', 'reservation', 'awesome listing'],
+        ['confirmed', 'reservation', 'awesome listing']
+    ]);
+})
