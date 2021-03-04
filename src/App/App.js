@@ -5,6 +5,7 @@ import ViewModelBuilder from './ViewModelBuilder/ViewModelBuilder';
 import AnalyticsView from './AnalyticsView/AnalyticsView';
 import DataFilterer from "./ViewModelBuilder/DataFilterer/DataFilterer";
 import TitleIndexer from "./ViewModelBuilder/TitleIndexer/TitleIndexer";
+import DataOrderer from "./ViewModelBuilder/DataOrderer/DataOrderer";
 
 class App extends React.Component {
   // The contents of the csv can be stored in the state
@@ -26,12 +27,19 @@ class App extends React.Component {
       this.state.fileUploaded = true;
       this.csvParser.readCsvFiles(e, (data) => {
           let titleIndexes = TitleIndexer.getTitleIndexes(data[0]);
-          let combinedData = DataFilterer.filterOutAllEmptyData(this.state.data.concat(data), titleIndexes);
-          this.state.data = combinedData;
-          let viewBuilder = new ViewModelBuilder(combinedData, titleIndexes);
+          let treatedData = this.treatData(data, titleIndexes);
+          this.state.data = treatedData;
+          let viewBuilder = new ViewModelBuilder(treatedData, titleIndexes);
           this.state.viewModel = viewBuilder.createViewModel();
           this.setState(this.state.viewModel);
       });
+  }
+
+  treatData(data, titleIndexes) {
+      let filteredData = DataFilterer.filterOutAllEmptyData(this.state.data.concat(data), titleIndexes);
+      let orderedData = DataOrderer.orderChronologically(filteredData, titleIndexes);
+      let lowerCasedData = DataFilterer.lowerCaseData(orderedData, titleIndexes);
+      return lowerCasedData;
   }
 
   render() {

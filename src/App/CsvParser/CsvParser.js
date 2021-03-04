@@ -21,7 +21,7 @@ class CsvParser {
         let combinedRawLines = [];
         for(let i = 0; i < fileDataArray.length; i++) {
             let thisFile = fileDataArray[i];
-            let lines = thisFile.toLowerCase().split("\n");
+            let lines = thisFile.split("\n");
             combinedRawLines = combinedRawLines.concat(lines);
         }
 

@@ -38,6 +38,10 @@ code {
   display: flex;
 }
 
+.main-filter {
+  margin-bottom: 16px;
+}
+
 .filter > div{
   background-color: #bdbdbd;
   padding: 10px 24px;

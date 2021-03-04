@@ -107,3 +107,22 @@ it('filters out canceled bookings', () => {
         ['confirmed', 'reservation', 'awesome listing']
     ]);
 })
+
+it('lowercases all but the listing names', () => {
+    let data = [
+        ['Status', 'Type', 'Listing'],
+        ['confirmed', 'Reservation', 'Awesome Listing'],
+        ['CanCeled', 'type', 'lISting'],
+        ['CONFIRMED', 'reservation', 'Awesome Listing'],
+        ['canceled', 'reservation', 'Awesome Listing']
+    ];
+
+    let filteredData = DataFilterer.lowerCaseData(DataFilterer.filterOutTitleRow(data), TitleIndexer.getTitleIndexes(data[0]));
+
+    expect(filteredData).toEqual([
+        ['confirmed', 'reservation', 'Awesome Listing'],
+        ['canceled', 'type', 'lISting'],
+        ['confirmed', 'reservation', 'Awesome Listing'],
+        ['canceled', 'reservation', 'Awesome Listing']
+    ]);
+})

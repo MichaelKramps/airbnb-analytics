@@ -107,6 +107,24 @@ class DataFilterer{
         }
         return false;
     }
+
+    static lowerCaseData(data, titleIndexes) {
+        let lowerCasedData = [];
+        for (let i = 0; i < data.length; i++) {
+            let thisRow = data[i];
+            if (titleIndexes.statusIndex && thisRow[titleIndexes.statusIndex]) {
+                thisRow[titleIndexes.statusIndex] = thisRow[titleIndexes.statusIndex].toLowerCase();
+            }
+            if (titleIndexes.rowTypeIndex && thisRow[titleIndexes.rowTypeIndex]) {
+                thisRow[titleIndexes.rowTypeIndex] = thisRow[titleIndexes.rowTypeIndex].toLowerCase();
+            }
+            if (titleIndexes.confirmationCodeIndex && thisRow[titleIndexes.confirmationCodeIndex]) {
+                thisRow[titleIndexes.confirmationCodeIndex] = thisRow[titleIndexes.confirmationCodeIndex].toLowerCase();
+            }
+            lowerCasedData.push(thisRow)
+        }
+        return lowerCasedData;
+    }
 }
 
 export default DataFilterer;
