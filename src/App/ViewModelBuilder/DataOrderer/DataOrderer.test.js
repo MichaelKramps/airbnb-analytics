@@ -14,7 +14,6 @@ it('Filters out title row if present', () => {
 
     let filteredData = DataOrderer.orderChronologically(DataFilterer.filterOutTitleRow(data), TitleIndexer.getTitleIndexes(data[0]));
 
-    console.log(filteredData);
 
     expect(filteredData).toEqual([
         [ '10/17/2020', 'awesome listing', '123.00', 'booking' ],

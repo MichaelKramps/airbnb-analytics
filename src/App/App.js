@@ -36,10 +36,10 @@ class App extends React.Component {
   }
 
   treatData(data, titleIndexes) {
-      let filteredData = DataFilterer.filterOutAllEmptyData(this.state.data.concat(data), titleIndexes);
+      let lowerCasedData = DataFilterer.lowerCaseData(data, titleIndexes);
+      let filteredData = DataFilterer.filterOutAllEmptyData(this.state.data.concat(lowerCasedData), titleIndexes);
       let orderedData = DataOrderer.orderChronologically(filteredData, titleIndexes);
-      let lowerCasedData = DataFilterer.lowerCaseData(orderedData, titleIndexes);
-      return lowerCasedData;
+      return orderedData;
   }
 
   render() {

@@ -41,15 +41,9 @@ class CsvParser {
         for(let i = 0; i < fileDataArray.length; i++) {
             let thisFile = fileDataArray[i];
             let filteredFileDataArray = this.createFilteredArrayFromFile(thisFile);
-            console.log("1");
-            console.log(filteredFileDataArray);
             let fileDataArrayWithOrderedIndex = this.createProperlyIndexedArray(filteredFileDataArray);
-            console.log("2");
-            console.log(fileDataArrayWithOrderedIndex);
             combinedLinesOfAllFiles = combinedLinesOfAllFiles.concat(fileDataArrayWithOrderedIndex);
         }
-        console.log("3");
-        console.log(combinedLinesOfAllFiles);
 
         return combinedLinesOfAllFiles;
     }
