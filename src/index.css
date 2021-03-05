@@ -14,6 +14,39 @@ body {
   margin: auto;
 }
 
+.csv-upload-container {
+  padding: 36px 0;
+  font-size: 1.3em;
+}
+
+#airbnb-csv-upload {
+  color: #ee3300;
+  font-size: 1.2em;
+}
+
+.sample-button-container {
+  padding: 12px 0 24px 0;
+}
+
+.go-back-button {
+  background-color: #4682B4;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+#sample-data-button {
+  font-size: 1.2em;
+}
+
+h1 a {
+  color: #4682B4;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
