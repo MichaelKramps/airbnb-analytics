@@ -27,10 +27,9 @@ class App extends React.Component {
   fileUploadHandler(e) {
       this.state.fileUploaded = true;
       this.csvParser.readCsvFiles(e, (data) => {
-          let titleIndexes = TitleIndexer.getTitleIndexes(data[0]);
-          let treatedData = this.treatData(data, titleIndexes);
+          let treatedData = this.treatData(data, TitleIndexer.staticIndexes);
           this.state.data = treatedData;
-          let viewBuilder = new ViewModelBuilder(treatedData, titleIndexes);
+          let viewBuilder = new ViewModelBuilder(treatedData, TitleIndexer.staticIndexes);
           this.state.viewModel = viewBuilder.createViewModel();
           this.setState(this.state.viewModel);
       });

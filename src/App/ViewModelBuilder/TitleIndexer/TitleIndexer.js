@@ -1,5 +1,23 @@
 class TitleIndexer{
 
+    static get staticIndexes() {
+        return {
+            startDateIndex: 0,
+            endDateIndex: 1,
+            bookDateIndex: 2,
+            paymentDateIndex: 3,
+            statusIndex: 4,
+            numberNightsIndex: 5,
+            rowTypeIndex: 6,
+            listingNameIndex: 7,
+            amountPaidIndex: 8,
+            paidOutIndex: 9,
+            hostFeeIndex: 10,
+            cleaningFeeIndex: 11,
+            confirmationCodeIndex: 12
+        }
+    }
+
     static getTitleIndexes(titleRow){
         let titleIndexes = {};
 
@@ -51,7 +69,6 @@ class TitleIndexer{
                     break;
             }
         }
-        //titleIndexes.amountPaidIndex = 12;
         return titleIndexes
     }
 }

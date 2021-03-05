@@ -20,10 +20,6 @@ class ViewModelBuilder {
 
     createViewModel() {
         this.addTotalStatsByListing();
-        // this.addTotalNightsByListing();
-        // this.addAmountPaidByListing();
-        // this.addAveragePricePerNightByListing();
-        // this.addAverageNightsPerGuestByListing();
         this.addOverallStatsSplitByYearAndByListing();
         this.addOverallStatsSplitByMonthAndByListing();
         return this.viewModel;
