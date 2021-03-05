@@ -4,11 +4,11 @@ import SingleListingByYear from "./SingleListingByYear";
 class DataByYearAndByListing extends React.Component {
 
     render() {
-        let dataSplitByYear = this.props.dataSplitByYear.map((listing) =>
-            <SingleListingByYear listingData={listing} />
+        let dataSplitByYear = this.props.dataSplitByYear.map((listing, index) =>
+            <SingleListingByYear key={index} listingData={listing} />
         );
         return (
-            <div className="main-group" filterGroup="by-year">
+            <div className="main-group" filtergroup="by-year">
                 {dataSplitByYear}
             </div>
         )

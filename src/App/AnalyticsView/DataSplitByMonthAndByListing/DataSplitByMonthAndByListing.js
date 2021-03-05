@@ -4,11 +4,11 @@ import SingleListingByMonth from "./SingleListingByMonth";
 class DataByMonthAndByListing extends React.Component {
 
     render() {
-        let dataSplitByMonth = this.props.dataSplitByMonth.map((listing) =>
-            <SingleListingByMonth listingData={listing} />
+        let dataSplitByMonth = this.props.dataSplitByMonth.map((listing, index) =>
+            <SingleListingByMonth key={index} listingData={listing} />
         );
         return (
-            <div className="main-group" filterGroup="by-month">
+            <div className="main-group" filtergroup="by-month">
                 <div className="filter">
                     <div month="January" filters="January">January</div>
                     <div month="February" filters="February">February</div>

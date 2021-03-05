@@ -2,9 +2,9 @@ $(function() {
     $("body").on("click", ".filter > div", function(){
         if ($(this).hasClass("clear-all")) {
             $(".active").removeClass("active");
-            $("div[filterGroup='all-time']").addClass("active");
+            $("div[filtergroup='all-time']").addClass("active");
             $("div[filters='all-time']").addClass("active");
-            $("div[filterGroup='by-month'] .month-data").addClass("active");
+            $("div[filtergroup='by-month'] .month-data").addClass("active");
             return;
         }
         if (!$(this).hasClass("active")) {
@@ -15,7 +15,7 @@ $(function() {
             }
             $(this).addClass("active");
             let filters = $(this).attr("filters");
-            $("div[filterGroup='" + filters + "']").addClass("active");
+            $("div[filtergroup='" + filters + "']").addClass("active");
         }
     });
 });

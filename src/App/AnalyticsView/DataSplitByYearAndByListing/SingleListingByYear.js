@@ -15,8 +15,9 @@ class SingleListingByYear extends React.Component {
                     <div>Average Nights/Guest</div>
                     <div>Average Price/Night</div>
                 </div>
-                {this.props.listingData.years.map(year =>
+                {this.props.listingData.years.map((year, index) =>
                     <SingleYearOfListing
+                        key={index}
                         year={year.year}
                         amountPaid={year.amountPaid}
                         totalStays={year.totalStays}

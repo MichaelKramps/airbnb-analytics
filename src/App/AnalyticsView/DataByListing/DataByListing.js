@@ -4,8 +4,9 @@ import DataForSingleListing from "./DataForSingleListing";
 class DataByListing extends React.Component {
 
     render() {
-        let dataSplitByListing = this.props.dataByListing.map((listing) =>
+        let dataSplitByListing = this.props.dataByListing.map((listing, index) =>
             <DataForSingleListing
+                key={index}
                 name={listing.name}
                 totalStays={listing.totalStays}
                 totalNights={listing.totalNights}
@@ -15,7 +16,7 @@ class DataByListing extends React.Component {
             />
         );
         return(
-            <div className="main-group active data-grouping" filterGroup="all-time">
+            <div className="main-group active data-grouping" filtergroup="all-time">
                 <div className="static-data-container">
                     <div>Listing</div>
                     <div>Total Paid</div>
