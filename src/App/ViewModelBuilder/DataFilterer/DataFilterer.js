@@ -102,7 +102,7 @@ class DataFilterer{
     }
 
     static notCancelled(status) {
-        if (status != "canceled"){
+        if (status !== "canceled"){
             return true;
         }
         return false;
