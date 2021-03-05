@@ -29,7 +29,8 @@ class CsvParser {
         for(let i = 0; i < combinedRawLines.length; i++) {
             let line = combinedRawLines[i];
             let filterOutDoubleQuotes = line.replace(/"([^" ]+),([^" ]+)"/, "$1$2");
-            filteredData.push(filterOutDoubleQuotes.split(","))
+            let filterOutPayoutsWithCommas = filterOutDoubleQuotes.replace(/(\$?\d+),(\d+)?,?(\d+)(\.\d{2})/, "$1$2$3$4");
+            filteredData.push(filterOutPayoutsWithCommas.split(","))
         }
 
         return filteredData;

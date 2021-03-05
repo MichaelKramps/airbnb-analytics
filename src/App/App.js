@@ -15,6 +15,7 @@ class App extends React.Component {
     this.state = {
       fileUploaded: false,
       data: [],
+      staticIndexes: {},
       viewModel: {},
       // state should basically mirror the view model
       // or at least provide the data necessary to build the view model
