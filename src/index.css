@@ -67,6 +67,10 @@ code {
   color: #ffffff;
 }
 
+.data-grouping > div:first-of-type > div {
+  cursor: pointer;
+}
+
 .filter{
   display: flex;
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import DataForSingleListing from "./DataForSingleListing";
-import TotalStatsSorter
-    from "../../ViewModelManipulation/TotalStatsSorter";
+import ViewModelSorter
+    from "../../ViewModelManipulation/ViewModelSorter";
 
 class DataByListing extends React.Component {
 
@@ -21,7 +21,7 @@ class DataByListing extends React.Component {
             <div className="main-group active data-grouping" filtergroup="all-time">
                 <div className="static-data-container">
                     <div>Listing</div>
-                    <div onClick={() => {this.props.sortViewModelBy(TotalStatsSorter.orderByPayout)}}>Total Paid</div>
+                    <div onClick={() => {this.props.sortViewModelBy(ViewModelSorter.orderTotalStatsByPayout)}}>Total Paid &#x21D5;</div>
                     <div>Total Stays</div>
                     <div>Total Nights</div>
                     <div>Average Nights/Booking</div>

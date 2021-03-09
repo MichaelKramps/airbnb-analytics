@@ -1,4 +1,4 @@
-import TotalStatsSorter from "./TotalStatsSorter";
+import ViewModelSorter from "./ViewModelSorter";
 
 it('Orders by Payout', () => {
     let viewModel = {
@@ -9,16 +9,14 @@ it('Orders by Payout', () => {
         ]
     };
 
-    let filteredData = TotalStatsSorter.forwardOrderByPayout(viewModel);
+    let orderedArray = ViewModelSorter.forwardOrderBy(viewModel.totalStatsByListing, "totalPaid");
 
 
-    expect(filteredData).toEqual({
-        totalStatsByListing: [
-            {name: "listing 2", totalPaid: "2000.00"},
-            {name: "listing 1", totalPaid: "1999.99"},
-            {name: "listing 3", totalPaid: "1998.99"}
-        ]
-    })
+    expect(orderedArray).toEqual([
+        {name: "listing 2", totalPaid: "2000.00"},
+        {name: "listing 1", totalPaid: "1999.99"},
+        {name: "listing 3", totalPaid: "1998.99"}
+    ])
 })
 
 it('Reverse orders by Payout', () => {
@@ -30,16 +28,14 @@ it('Reverse orders by Payout', () => {
         ]
     };
 
-    let filteredData = TotalStatsSorter.reverseOrderByPayout(viewModel);
+    let orderedArray = ViewModelSorter.reverseOrderBy(viewModel.totalStatsByListing, "totalPaid");
 
 
-    expect(filteredData).toEqual({
-        totalStatsByListing: [
-            {name: "listing 3", totalPaid: "1998.99"},
-            {name: "listing 1", totalPaid: "1999.99"},
-            {name: "listing 2", totalPaid: "2000.00"}
-        ]
-    })
+    expect(orderedArray).toEqual([
+        {name: "listing 3", totalPaid: "1998.99"},
+        {name: "listing 1", totalPaid: "1999.99"},
+        {name: "listing 2", totalPaid: "2000.00"}
+    ])
 })
 
 it('Orders forward by Payout the first time', () => {
@@ -51,7 +47,7 @@ it('Orders forward by Payout the first time', () => {
         ]
     };
 
-    let filteredData = TotalStatsSorter.orderByPayout(viewModel);
+    let filteredData = ViewModelSorter.orderBy(viewModel,"totalStatsByListing", "totalPaid");
 
 
     expect(filteredData).toEqual({
@@ -72,7 +68,7 @@ it('Orders reverse by Payout if already ordered', () => {
         ]
     };
 
-    let filteredData = TotalStatsSorter.orderByPayout(viewModel);
+    let filteredData = ViewModelSorter.orderBy(viewModel, "totalStatsByListing", "totalPaid");
 
 
     expect(filteredData).toEqual({

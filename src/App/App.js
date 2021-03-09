@@ -7,8 +7,8 @@ import DataFilterer from "./ViewModelBuilder/DataFilterer/DataFilterer";
 import TitleIndexer from "./ViewModelBuilder/TitleIndexer/TitleIndexer";
 import DataOrderer from "./ViewModelBuilder/DataOrderer/DataOrderer";
 import sampleData from "./SampleData";
-import TotalStatsSorter
-    from "./ViewModelManipulation/TotalStatsSorter";
+import ViewModelSorter
+    from "./ViewModelManipulation/ViewModelSorter";
 
 class App extends React.Component {
 
