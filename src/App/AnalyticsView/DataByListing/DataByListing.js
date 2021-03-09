@@ -22,10 +22,10 @@ class DataByListing extends React.Component {
                 <div className="static-data-container">
                     <div>Listing</div>
                     <div onClick={() => {this.props.sortViewModelBy(ViewModelSorter.orderTotalStatsByPayout)}}>Total Paid &#x21D5;</div>
-                    <div>Total Stays</div>
-                    <div>Total Nights</div>
-                    <div>Average Nights/Booking</div>
-                    <div>Average Price/Night</div>
+                    <div onClick={() => {this.props.sortViewModelBy(ViewModelSorter.orderTotalStatsByStays)}}>Total Stays &#x21D5;</div>
+                    <div onClick={() => {this.props.sortViewModelBy(ViewModelSorter.orderTotalStatsByNights)}}>Total Nights &#x21D5;</div>
+                    <div onClick={() => {this.props.sortViewModelBy(ViewModelSorter.orderTotalStatsByNightsPerBooking)}}>Avg. Nights/Stay &#x21D5;</div>
+                    <div onClick={() => {this.props.sortViewModelBy(ViewModelSorter.orderTotalStatsByPricePerNight)}}>Avg. Price/Night &#x21D5;</div>
                 </div>
                 {dataSplitByListing}
             </div>

@@ -31,6 +31,22 @@ class ViewModelSorter{
     static orderTotalStatsByPayout(viewModel) {
         return ViewModelSorter.orderBy(viewModel, "totalStatsByListing", "totalPaid");
     }
+
+    static orderTotalStatsByStays(viewModel) {
+        return ViewModelSorter.orderBy(viewModel, "totalStatsByListing", "totalStays");
+    }
+
+    static orderTotalStatsByNights(viewModel) {
+        return ViewModelSorter.orderBy(viewModel, "totalStatsByListing", "totalNights");
+    }
+
+    static orderTotalStatsByNightsPerBooking(viewModel) {
+        return ViewModelSorter.orderBy(viewModel, "totalStatsByListing", "averageNightsPerGuest");
+    }
+
+    static orderTotalStatsByPricePerNight(viewModel) {
+        return ViewModelSorter.orderBy(viewModel, "totalStatsByListing", "averagePricePerNight");
+    }
 }
 
 export default ViewModelSorter;
