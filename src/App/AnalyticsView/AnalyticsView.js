@@ -17,7 +17,7 @@ class AnalyticsView extends React.Component {
                     <div className="clear-all">Reset</div>
                 </div>
 
-                <DataByListing dataByListing={this.props.totalStatsByListing} sortByPayout={this.props.sortByPayout} />
+                <DataByListing dataByListing={this.props.totalStatsByListing} sortViewModelBy={this.props.sortViewModelBy} />
                 <DataByYearAndByListing dataSplitByYear={this.props.overallStatsByYearAndByListing} />
                 <DataByMonthAndByListing dataSplitByMonth={this.props.overallStatsByMonthAndByListing} />
             </React.Fragment>

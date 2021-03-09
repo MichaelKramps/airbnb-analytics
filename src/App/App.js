@@ -21,6 +21,7 @@ class App extends React.Component {
     };
     this.csvParser = new CsvParser();
     this.fileUploadHandler = this.fileUploadHandler.bind(this);
+    this.sortViewModelBy = this.sortViewModelBy.bind(this);
   }
 
   fileUploadHandler(e) {
@@ -38,8 +39,8 @@ class App extends React.Component {
       return orderedData;
   }
 
-  sortTotalStatsByPayout(viewModel) {
-      let newViewModel = TotalStatsSorter.orderByPayout(viewModel);
+  sortViewModelBy(sortFunction) {
+      let newViewModel = sortFunction(this.state.viewModel);
       this.setState({fileUploaded: this.state.fileUploaded, data: this.state.data, viewModel: newViewModel});
   }
 
@@ -65,7 +66,7 @@ class App extends React.Component {
                   <input type="file" name="airbnb-csv-upload" id="airbnb-csv-upload"
                          accept=".csv" multiple
                          onChange={(e) => this.fileUploadHandler(e)}/>
-                  <AnalyticsView {...this.state.viewModel} sortByPayout={() => this.sortTotalStatsByPayout(this.state.viewModel)} />
+                  <AnalyticsView {...this.state.viewModel} sortViewModelBy={this.sortViewModelBy} />
               </div>
           )
       } else {
