@@ -19,7 +19,7 @@ class DataByListing extends React.Component {
             <div className="main-group active data-grouping" filtergroup="all-time">
                 <div className="static-data-container">
                     <div>Listing</div>
-                    <div>Total Paid</div>
+                    <div onClick={this.props.sortByPayout}>Total Paid</div>
                     <div>Total Stays</div>
                     <div>Total Nights</div>
                     <div>Average Nights/Booking</div>

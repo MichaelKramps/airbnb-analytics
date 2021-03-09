@@ -7,6 +7,8 @@ import DataFilterer from "./ViewModelBuilder/DataFilterer/DataFilterer";
 import TitleIndexer from "./ViewModelBuilder/TitleIndexer/TitleIndexer";
 import DataOrderer from "./ViewModelBuilder/DataOrderer/DataOrderer";
 import sampleData from "./SampleData";
+import TotalStatsSorter
+    from "./ViewModelManipulation/TotalStatsSorter";
 
 class App extends React.Component {
 
@@ -36,6 +38,11 @@ class App extends React.Component {
       return orderedData;
   }
 
+  sortTotalStatsByPayout(viewModel) {
+      let newViewModel = TotalStatsSorter.orderByPayout(viewModel);
+      this.setState({fileUploaded: this.state.fileUploaded, data: this.state.data, viewModel: newViewModel});
+  }
+
   loadSampleData() {
       let data = this.csvParser.parseCsvFile(sampleData);
       let treatedData = this.treatData(data);
@@ -58,7 +65,7 @@ class App extends React.Component {
                   <input type="file" name="airbnb-csv-upload" id="airbnb-csv-upload"
                          accept=".csv" multiple
                          onChange={(e) => this.fileUploadHandler(e)}/>
-                  <AnalyticsView {...this.state.viewModel} />
+                  <AnalyticsView {...this.state.viewModel} sortByPayout={() => this.sortTotalStatsByPayout(this.state.viewModel)} />
               </div>
           )
       } else {

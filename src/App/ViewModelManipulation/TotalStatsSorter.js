@@ -1,10 +1,18 @@
 class TotalStatsSorter{
     static orderByPayout(viewModel) {
-        return undefined;
+        viewModel.totalStatsByListing.sort(function(a, b){
+            return (b.totalPaid) - (a.totalPaid);
+        })
+
+        return viewModel;
     }
 
     static reverseOrderByPayout(viewModel) {
-        return undefined;
+        viewModel.totalStatsByListing.sort(function(a, b){
+            return (a.totalPaid) - (b.totalPaid);
+        })
+
+        return viewModel;
     }
 }
 
