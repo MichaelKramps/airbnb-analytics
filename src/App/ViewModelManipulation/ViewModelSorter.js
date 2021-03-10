@@ -12,6 +12,17 @@ class ViewModelSorter{
         return viewModel;
     }
 
+    static orderYearsBy(viewModel, dataGroupingIndex, orderBy) {
+        let listingGroup = viewModel.overallStatsByYearAndByListing[dataGroupingIndex];
+        let arrayToOrder = listingGroup.years;
+        if (OrderHelper.isOrdered(arrayToOrder, orderBy)) {
+            arrayToOrder = ViewModelSorter.reverseOrderBy(arrayToOrder, orderBy);
+        } else {
+            arrayToOrder = ViewModelSorter.forwardOrderBy(arrayToOrder, orderBy);
+        }
+        return viewModel;
+    }
+
     static forwardOrderBy(toOrder, orderBy) {
         toOrder.sort(function(a, b){
             return (b[orderBy]) - (a[orderBy]);
@@ -46,6 +57,26 @@ class ViewModelSorter{
 
     static orderTotalStatsByPricePerNight(viewModel) {
         return ViewModelSorter.orderBy(viewModel, "totalStatsByListing", "averagePricePerNight");
+    }
+
+    static orderYearlyStatsByPayout(viewModel, dataGroupIndex) {
+        return ViewModelSorter.orderYearsBy(viewModel, dataGroupIndex, "amountPaid");
+    }
+
+    static orderYearlyTotalStatsByStays(viewModel, dataGroupIndex) {
+        return ViewModelSorter.orderYearsBy(viewModel, dataGroupIndex, "totalStays");
+    }
+
+    static orderYearlyStatsByNights(viewModel, dataGroupIndex) {
+        return ViewModelSorter.orderYearsBy(viewModel, dataGroupIndex, "totalNights");
+    }
+
+    static orderYearlyStatsByNightsPerBooking(viewModel, dataGroupIndex) {
+        return ViewModelSorter.orderYearsBy(viewModel, dataGroupIndex, "averageNightsPerGuest");
+    }
+
+    static orderYearlyStatsByPricePerNight(viewModel, dataGroupIndex) {
+        return ViewModelSorter.orderYearsBy(viewModel, dataGroupIndex, "averagePricePerNight");
     }
 }
 

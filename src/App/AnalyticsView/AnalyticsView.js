@@ -18,8 +18,8 @@ class AnalyticsView extends React.Component {
                 </div>
 
                 <DataByListing dataByListing={this.props.totalStatsByListing} sortViewModelBy={this.props.sortViewModelBy} />
-                <DataByYearAndByListing dataSplitByYear={this.props.overallStatsByYearAndByListing} />
-                <DataByMonthAndByListing dataSplitByMonth={this.props.overallStatsByMonthAndByListing} />
+                <DataByYearAndByListing dataSplitByYear={this.props.overallStatsByYearAndByListing} sortViewModelBy={this.props.sortViewModelBy} />
+                <DataByMonthAndByListing dataSplitByMonth={this.props.overallStatsByMonthAndByListing} sortViewModelBy={this.props.sortViewModelBy} />
             </React.Fragment>
         )
     };

@@ -5,7 +5,7 @@ class DataByMonthAndByListing extends React.Component {
 
     render() {
         let dataSplitByMonth = this.props.dataSplitByMonth.map((listing, index) =>
-            <SingleListingByMonth key={index} listingData={listing} />
+            <SingleListingByMonth key={index} listingData={listing} sortViewModelBy={this.props.sortViewModelBy} />
         );
         return (
             <div className="main-group" filtergroup="by-month">

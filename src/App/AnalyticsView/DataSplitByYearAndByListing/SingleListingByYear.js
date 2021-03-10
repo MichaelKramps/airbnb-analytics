@@ -1,5 +1,6 @@
 import React from 'react';
 import SingleYearOfListing from "./SingleYearOfListing";
+import ViewModelSorter from "../../ViewModelManipulation/ViewModelSorter";
 
 class SingleListingByYear extends React.Component {
 
@@ -9,7 +10,7 @@ class SingleListingByYear extends React.Component {
                 <h3>{this.props.listingData.name}</h3>
                 <div className={"static-data-container"}>
                     <div>Year</div>
-                    <div>Total Paid</div>
+                    <div onClick={() => {this.props.sortViewModelBy(ViewModelSorter.orderYearlyStatsByPayout, this.props.index)}}>Total Paid</div>
                     <div>Total Stays</div>
                     <div>Total Nights</div>
                     <div>Average Nights/Guest</div>

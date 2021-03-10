@@ -8,8 +8,8 @@ class OrderHelper{
             let currentLine = array[line];
             let nextLine = array[line + 1];
 
-            let currentEntry = currentLine[orderedBy];
-            let nextEntry = nextLine[orderedBy];
+            let currentEntry = parseInt(currentLine[orderedBy]);
+            let nextEntry = parseInt(nextLine[orderedBy]);
 
             if (nextEntry > currentEntry) {
                 return false;

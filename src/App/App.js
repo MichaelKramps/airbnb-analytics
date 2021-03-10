@@ -39,8 +39,8 @@ class App extends React.Component {
       return orderedData;
   }
 
-  sortViewModelBy(sortFunction) {
-      let newViewModel = sortFunction(this.state.viewModel);
+  sortViewModelBy(sortFunction, dataGroupIndex) {
+      let newViewModel = sortFunction(this.state.viewModel, dataGroupIndex);
       this.setState({fileUploaded: this.state.fileUploaded, data: this.state.data, viewModel: newViewModel});
   }
 
