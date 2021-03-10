@@ -9,12 +9,12 @@ class SingleListingByYear extends React.Component {
             <div className="data-grouping">
                 <h3>{this.props.listingData.name}</h3>
                 <div className={"static-data-container"}>
-                    <div>Year</div>
-                    <div onClick={() => {this.props.sortViewModelBy(ViewModelSorter.orderYearlyStatsByPayout, this.props.index)}}>Total Paid</div>
-                    <div>Total Stays</div>
-                    <div>Total Nights</div>
-                    <div>Average Nights/Guest</div>
-                    <div>Average Price/Night</div>
+                    <div onClick={() => {this.props.sortViewModelBy(ViewModelSorter.orderYearlyStatsByYear, this.props.index)}}>Year &#x21D5;</div>
+                    <div onClick={() => {this.props.sortViewModelBy(ViewModelSorter.orderYearlyStatsByPayout, this.props.index)}}>Total Paid &#x21D5;</div>
+                    <div onClick={() => {this.props.sortViewModelBy(ViewModelSorter.orderYearlyStatsByStays, this.props.index)}}>Total Stays &#x21D5;</div>
+                    <div onClick={() => {this.props.sortViewModelBy(ViewModelSorter.orderYearlyStatsByNights, this.props.index)}}>Total Nights &#x21D5;</div>
+                    <div onClick={() => {this.props.sortViewModelBy(ViewModelSorter.orderYearlyStatsByNightsPerBooking, this.props.index)}}>Avg. Nights/Stay &#x21D5;</div>
+                    <div onClick={() => {this.props.sortViewModelBy(ViewModelSorter.orderYearlyStatsByPricePerNight, this.props.index)}}>Avg. Price/Night &#x21D5;</div>
                 </div>
                 {this.props.listingData.years.map((year, index) =>
                     <SingleYearOfListing

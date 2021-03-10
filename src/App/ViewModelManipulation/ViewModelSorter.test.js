@@ -173,3 +173,97 @@ it('Orders nested data reverse by Payout only for correct listing', () => {
         ]
     })
 })
+
+it('Orders nested data forward by Month only for correct listing', () => {
+    let viewModel = {
+        overallStatsByMonthAndByListing: [
+            {
+                name: "listing1",
+                months: [
+                    {year: "2011", month: "February"},
+                    {year: "2011", month: "January"},
+                    {year: "2012", month: "January"}
+                ]
+            },
+            {
+                name: "listing2",
+                months: [
+                    {year: "2011", month: "February"},
+                    {year: "2011", month: "January"},
+                    {year: "2012", month: "January"}
+                ]
+            }
+        ]
+    };
+
+    let filteredData = ViewModelSorter.orderMonthsByMonth(viewModel,0);
+
+
+    expect(filteredData).toEqual({
+        overallStatsByMonthAndByListing: [
+            {
+                name: "listing1",
+                months: [
+                    {year: "2012", month: "January"},
+                    {year: "2011", month: "February"},
+                    {year: "2011", month: "January"}
+                ]
+            },
+            {
+                name: "listing2",
+                months: [
+                    {year: "2011", month: "February"},
+                    {year: "2011", month: "January"},
+                    {year: "2012", month: "January"}
+                ]
+            }
+        ]
+    })
+})
+
+it('Orders nested data reverse by Month only for correct listing', () => {
+    let viewModel = {
+        overallStatsByMonthAndByListing: [
+            {
+                name: "listing1",
+                months: [
+                    {year: "2012", month: "January"},
+                    {year: "2011", month: "February"},
+                    {year: "2011", month: "January"}
+                ]
+            },
+            {
+                name: "listing2",
+                months: [
+                    {year: "2011", month: "February"},
+                    {year: "2011", month: "January"},
+                    {year: "2012", month: "January"}
+                ]
+            }
+        ]
+    };
+
+    let filteredData = ViewModelSorter.orderMonthsByMonth(viewModel,0);
+
+
+    expect(filteredData).toEqual({
+        overallStatsByMonthAndByListing: [
+            {
+                name: "listing1",
+                months: [
+                    {year: "2011", month: "January"},
+                    {year: "2011", month: "February"},
+                    {year: "2012", month: "January"}
+                ]
+            },
+            {
+                name: "listing2",
+                months: [
+                    {year: "2011", month: "February"},
+                    {year: "2011", month: "January"},
+                    {year: "2012", month: "January"}
+                ]
+            }
+        ]
+    })
+})

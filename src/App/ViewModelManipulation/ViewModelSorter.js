@@ -23,6 +23,61 @@ class ViewModelSorter{
         return viewModel;
     }
 
+    static orderMonthsBy(viewModel, dataGroupingIndex, orderBy) {
+        let listingGroup = viewModel.overallStatsByMonthAndByListing[dataGroupingIndex];
+        let arrayToOrder = listingGroup.months;
+        if (OrderHelper.isOrdered(arrayToOrder, orderBy)) {
+            arrayToOrder = ViewModelSorter.reverseOrderBy(arrayToOrder, orderBy);
+        } else {
+            arrayToOrder = ViewModelSorter.forwardOrderBy(arrayToOrder, orderBy);
+        }
+        return viewModel;
+    }
+
+    static orderMonthsByMonth(viewModel, dataGroupingIndex) {
+        let orderBy = "month";
+        let listingGroup = viewModel.overallStatsByMonthAndByListing[dataGroupingIndex];
+        let arrayToOrder = listingGroup.months;
+        if (OrderHelper.isDateOrdered(arrayToOrder, orderBy)) {
+            arrayToOrder = ViewModelSorter.reverseOrderDateBy(arrayToOrder);
+        } else {
+            arrayToOrder = ViewModelSorter.forwardOrderDateBy(arrayToOrder);
+        }
+        return viewModel;
+    }
+
+    static forwardOrderDateBy(toOrder) {
+        toOrder.sort(function(a, b){
+            let date1 = new Date();
+            date1.setFullYear(a.year);
+            date1.setMonth(OrderHelper.setMonthFrom(a.month));
+
+            let date2 = new Date();
+            date2.setFullYear(b.year);
+            date2.setMonth(OrderHelper.setMonthFrom(b.month));
+
+            return (date2 - date1);
+        })
+
+        return toOrder;
+    }
+
+    static reverseOrderDateBy(toOrder) {
+        toOrder.sort(function(a, b){
+            let date1 = new Date();
+            date1.setFullYear(a.year);
+            date1.setMonth(OrderHelper.setMonthFrom(a.month));
+
+            let date2 = new Date();
+            date2.setFullYear(b.year);
+            date2.setMonth(OrderHelper.setMonthFrom(b.month));
+
+            return (date1 - date2);
+        })
+
+        return toOrder;
+    }
+
     static forwardOrderBy(toOrder, orderBy) {
         toOrder.sort(function(a, b){
             return (b[orderBy]) - (a[orderBy]);
@@ -59,11 +114,15 @@ class ViewModelSorter{
         return ViewModelSorter.orderBy(viewModel, "totalStatsByListing", "averagePricePerNight");
     }
 
+    static orderYearlyStatsByYear(viewModel, dataGroupIndex) {
+        return ViewModelSorter.orderYearsBy(viewModel, dataGroupIndex, "year");
+    }
+
     static orderYearlyStatsByPayout(viewModel, dataGroupIndex) {
         return ViewModelSorter.orderYearsBy(viewModel, dataGroupIndex, "amountPaid");
     }
 
-    static orderYearlyTotalStatsByStays(viewModel, dataGroupIndex) {
+    static orderYearlyStatsByStays(viewModel, dataGroupIndex) {
         return ViewModelSorter.orderYearsBy(viewModel, dataGroupIndex, "totalStays");
     }
 
@@ -77,6 +136,30 @@ class ViewModelSorter{
 
     static orderYearlyStatsByPricePerNight(viewModel, dataGroupIndex) {
         return ViewModelSorter.orderYearsBy(viewModel, dataGroupIndex, "averagePricePerNight");
+    }
+
+    static orderMonthlyStatsByMonth(viewModel, dataGroupIndex) {
+        return ViewModelSorter.orderMonthsByMonth(viewModel, dataGroupIndex);
+    }
+
+    static orderMonthlyStatsByPayout(viewModel, dataGroupIndex) {
+        return ViewModelSorter.orderMonthsBy(viewModel, dataGroupIndex, "amountPaid");
+    }
+
+    static orderMonthlyStatsByStays(viewModel, dataGroupIndex) {
+        return ViewModelSorter.orderMonthsBy(viewModel, dataGroupIndex, "totalStays");
+    }
+
+    static orderMonthlyStatsByNights(viewModel, dataGroupIndex) {
+        return ViewModelSorter.orderMonthsBy(viewModel, dataGroupIndex, "totalNights");
+    }
+
+    static orderMonthlyStatsByNightsPerBooking(viewModel, dataGroupIndex) {
+        return ViewModelSorter.orderMonthsBy(viewModel, dataGroupIndex, "averageNightsPerGuest");
+    }
+
+    static orderMonthlyStatsByPricePerNight(viewModel, dataGroupIndex) {
+        return ViewModelSorter.orderMonthsBy(viewModel, dataGroupIndex, "averagePricePerNight");
     }
 }
 
