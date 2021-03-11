@@ -173,7 +173,14 @@ class DataSplitter {
         secondSlice[this.titleIndexes.amountPaidIndex] = ((totalPaid * daysBookedInFollowingMonth) / totalNights).toFixed(2);
 
         allStays.push(firstSlice);
-        allStays.push(secondSlice);
+        if (this.crossesThreshold(secondSlice)){
+            let splitAgain = this.splitStay(secondSlice);
+            for (let stay = 0; stay < splitAgain.length; stay++) {
+                allStays.push(splitAgain[stay])
+            }
+        } else {
+            allStays.push(secondSlice);
+        }
 
         return allStays;
     }
