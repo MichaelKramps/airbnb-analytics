@@ -55,6 +55,11 @@ class ViewModelBuilder {
 
             thisListing.name = thisData[0][this.titleIndexes.listingNameIndex];
             thisListing.years = [];
+            let totalPaid = 0;
+            let totalNights = 0;
+            let totalStays = 0;
+            let totalAverageNightsPerGuest = 0;
+            let totalAveragePricePerNight = 0;
 
             let dataSplitByYear = this.dataSplitter.splitByYear(thisData);
 
@@ -69,8 +74,20 @@ class ViewModelBuilder {
                 thisYear.averageNightsPerGuest = (thisYear.totalNights / thisYear.totalStays).toFixed(2);
                 thisYear.averagePricePerNight = (thisYear.amountPaid / thisYear.totalNights).toFixed(2);
 
+                totalPaid += parseFloat(thisYear.amountPaid);
+                totalNights += thisYear.totalNights;
+                totalStays += thisYear.totalStays;
+                totalAverageNightsPerGuest += parseFloat(thisYear.averageNightsPerGuest);
+                totalAveragePricePerNight += parseFloat(thisYear.averagePricePerNight);
+
                 thisListing.years.push(thisYear);
             }
+
+            thisListing.averagePaid = (totalPaid / thisListing.years.length).toFixed(2);
+            thisListing.averageNights = totalNights / thisListing.years.length;
+            thisListing.averageStays = totalStays / thisListing.years.length;
+            thisListing.averageNightsPerGuest = (totalAverageNightsPerGuest / thisListing.years.length).toFixed(2);
+            thisListing.averagePricePerNight = (totalAveragePricePerNight / thisListing.years.length).toFixed(2);
 
             this.viewModel.overallStatsByYearAndByListing.push(thisListing);
         }

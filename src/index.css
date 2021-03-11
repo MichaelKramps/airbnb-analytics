@@ -71,6 +71,10 @@ code {
   cursor: pointer;
 }
 
+.average-row {
+  background-color: #c2ced6;
+}
+
 .filter{
   display: flex;
 }
