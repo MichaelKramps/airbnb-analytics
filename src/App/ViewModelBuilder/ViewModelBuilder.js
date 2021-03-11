@@ -84,8 +84,8 @@ class ViewModelBuilder {
             }
 
             thisListing.averagePaid = (totalPaid / thisListing.years.length).toFixed(2);
-            thisListing.averageNights = totalNights / thisListing.years.length;
-            thisListing.averageStays = totalStays / thisListing.years.length;
+            thisListing.averageNights = (totalNights / thisListing.years.length).toFixed(2);
+            thisListing.averageStays = (totalStays / thisListing.years.length).toFixed(2);
             thisListing.averageNightsPerGuest = (totalAverageNightsPerGuest / thisListing.years.length).toFixed(2);
             thisListing.averagePricePerNight = (totalAveragePricePerNight / thisListing.years.length).toFixed(2);
 
@@ -104,6 +104,11 @@ class ViewModelBuilder {
 
             thisListing.name = thisData[0][this.titleIndexes.listingNameIndex];
             thisListing.months = [];
+            let totalPaid = 0;
+            let totalNights = 0;
+            let totalStays = 0;
+            let totalAverageNightsPerGuest = 0;
+            let totalAveragePricePerNight = 0;
 
             let dataSplitByMonth = this.dataSplitter.splitByMonth(thisData);
 
@@ -122,8 +127,20 @@ class ViewModelBuilder {
                 thisYear.averageNightsPerGuest = (thisYear.totalNights / thisYear.totalStays).toFixed(2);
                 thisYear.averagePricePerNight = (thisYear.amountPaid / thisYear.totalNights).toFixed(2);
 
+                totalPaid += parseFloat(thisYear.amountPaid);
+                totalNights += thisYear.totalNights;
+                totalStays += thisYear.totalStays;
+                totalAverageNightsPerGuest += parseFloat(thisYear.averageNightsPerGuest);
+                totalAveragePricePerNight += parseFloat(thisYear.averagePricePerNight);
+
                 thisListing.months.push(thisYear);
             }
+
+            thisListing.averagePaid = (totalPaid / thisListing.months.length).toFixed(2);
+            thisListing.averageNights = (totalNights / thisListing.months.length).toFixed(2);
+            thisListing.averageStays = (totalStays / thisListing.months.length).toFixed(2);
+            thisListing.averageNightsPerGuest = (totalAverageNightsPerGuest / thisListing.months.length).toFixed(2);
+            thisListing.averagePricePerNight = (totalAveragePricePerNight / thisListing.months.length).toFixed(2);
 
             this.viewModel.overallStatsByMonthAndByListing.push(thisListing);
         }

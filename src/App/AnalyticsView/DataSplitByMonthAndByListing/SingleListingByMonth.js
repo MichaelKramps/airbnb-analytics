@@ -27,6 +27,14 @@ class SingleListingByMonth extends React.Component {
                         averageNightsPerGuest={month.averageNightsPerGuest}
                         averagePricePerNight={month.averagePricePerNight} />)
                 }
+                <div className={"static-data-container average-row"}>
+                    <div>Monthly Average</div>
+                    <div>{this.props.listingData.averagePaid}</div>
+                    <div>{this.props.listingData.averageStays}</div>
+                    <div>{this.props.listingData.averageNights}</div>
+                    <div>{this.props.listingData.averageNightsPerGuest}</div>
+                    <div>{this.props.listingData.averagePricePerNight}</div>
+                </div>
             </div>
         )
     }
