@@ -70,30 +70,36 @@ class CsvParser {
             let thisLine = filteredFileDataArray[line];
             let thisOrderedArrayLine = [];
 
-            thisOrderedArrayLine[TitleIndexer.staticIndexes.startDateIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.startDateIndex);
-            thisOrderedArrayLine[TitleIndexer.staticIndexes.endDateIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.endDateIndex);
-            thisOrderedArrayLine[TitleIndexer.staticIndexes.bookDateIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.bookDateIndex);
-            thisOrderedArrayLine[TitleIndexer.staticIndexes.paymentDateIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.paymentDateIndex);
-            thisOrderedArrayLine[TitleIndexer.staticIndexes.statusIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.statusIndex);
-            thisOrderedArrayLine[TitleIndexer.staticIndexes.numberNightsIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.numberNightsIndex);
-            thisOrderedArrayLine[TitleIndexer.staticIndexes.rowTypeIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.rowTypeIndex);
-            thisOrderedArrayLine[TitleIndexer.staticIndexes.listingNameIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.listingNameIndex);
-            thisOrderedArrayLine[TitleIndexer.staticIndexes.amountPaidIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.amountPaidIndex);
-            thisOrderedArrayLine[TitleIndexer.staticIndexes.paidOutIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.paidOutIndex);
-            thisOrderedArrayLine[TitleIndexer.staticIndexes.hostFeeIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.hostFeeIndex);
-            thisOrderedArrayLine[TitleIndexer.staticIndexes.cleaningFeeIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.cleaningFeeIndex);
-            thisOrderedArrayLine[TitleIndexer.staticIndexes.confirmationCodeIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.confirmationCodeIndex);
+            thisOrderedArrayLine[TitleIndexer.staticIndexes.startDateIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.startDateIndex, false, true);
+            thisOrderedArrayLine[TitleIndexer.staticIndexes.endDateIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.endDateIndex, false, true);
+            thisOrderedArrayLine[TitleIndexer.staticIndexes.bookDateIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.bookDateIndex, false, true);
+            thisOrderedArrayLine[TitleIndexer.staticIndexes.paymentDateIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.paymentDateIndex, false, true);
+            thisOrderedArrayLine[TitleIndexer.staticIndexes.statusIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.statusIndex, false, false);
+            thisOrderedArrayLine[TitleIndexer.staticIndexes.numberNightsIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.numberNightsIndex, true, false);
+            thisOrderedArrayLine[TitleIndexer.staticIndexes.rowTypeIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.rowTypeIndex, false, false);
+            thisOrderedArrayLine[TitleIndexer.staticIndexes.listingNameIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.listingNameIndex, false, false);
+            thisOrderedArrayLine[TitleIndexer.staticIndexes.amountPaidIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.amountPaidIndex, true, false);
+            thisOrderedArrayLine[TitleIndexer.staticIndexes.paidOutIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.paidOutIndex, true, false);
+            thisOrderedArrayLine[TitleIndexer.staticIndexes.hostFeeIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.hostFeeIndex, true, false);
+            thisOrderedArrayLine[TitleIndexer.staticIndexes.cleaningFeeIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.cleaningFeeIndex, true, false);
+            thisOrderedArrayLine[TitleIndexer.staticIndexes.confirmationCodeIndex] = this.createOrderedArrayEntry(thisLine, titleIndexes.confirmationCodeIndex, false, false);
 
             orderedArray[line - 1] = thisOrderedArrayLine;
         }
         return orderedArray;
     }
 
-    createOrderedArrayEntry(thisLine, titleIndex) {
+    createOrderedArrayEntry(thisLine, titleIndex, isNumeric) {
         if(thisLine[titleIndex]){
             return thisLine[titleIndex];
         } else {
-            return "";
+            if (isNumeric) {
+                return 0;
+            } else if (isDate) {
+                return "1900-01-01";
+            } else {
+                return "";
+            }
         }
     }
 }
