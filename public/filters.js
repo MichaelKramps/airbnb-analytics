@@ -1,9 +1,6 @@
 $(function() {
     $("body").on("click", ".filter > div", function(){
         if ($(this).hasClass("clear-all")) {
-            $(".active").removeClass("active");
-            $("div[filtergroup='all-time']").addClass("active");
-            $("div[filters='all-time']").addClass("active");
             $("div[filtergroup='by-month'] .month-data").addClass("active");
             return;
         }

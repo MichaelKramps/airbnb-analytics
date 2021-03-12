@@ -140,8 +140,12 @@ code {
 .filter > div{
   background-color: #bdbdbd;
   padding: 10px 24px;
-  border-right: 1px solid #ffffff;
+  border: 1px solid #ffffff;
   cursor: pointer;
+}
+
+.filter > div:hover {
+  border: 1px solid #36454f;
 }
 
 .filter > .active {
