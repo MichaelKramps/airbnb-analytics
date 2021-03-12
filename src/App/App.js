@@ -22,6 +22,7 @@ class App extends React.Component {
     this.csvParser = new CsvParser();
     this.fileUploadHandler = this.fileUploadHandler.bind(this);
     this.sortViewModelBy = this.sortViewModelBy.bind(this);
+    this.resetViewModel = this.resetViewModel.bind(this);
   }
 
   fileUploadHandler(e) {
@@ -55,6 +56,11 @@ class App extends React.Component {
       this.setState({fileUploaded: false, data: [], viewModel: {}});
   }
 
+  resetViewModel() {
+      let originalViewModel = new ViewModelBuilder(this.state.data, TitleIndexer.staticIndexes).createViewModel();
+      this.setState({fileUploaded: this.state.fileUploaded, data: this.state.data, viewModel: originalViewModel});
+  }
+
   render() {
       if (this.state.fileUploaded){
           return(
@@ -68,7 +74,7 @@ class App extends React.Component {
                              onChange={(e) => this.fileUploadHandler(e)} aria-label="File browser example" />
                       <span className="file-custom"></span>
                   </label>
-                  <AnalyticsView {...this.state.viewModel} sortViewModelBy={this.sortViewModelBy} />
+                  <AnalyticsView {...this.state.viewModel} sortViewModelBy={this.sortViewModelBy} resetViewModel={this.resetViewModel} />
               </div>
           )
       } else {

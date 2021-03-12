@@ -89,7 +89,7 @@ class CsvParser {
         return orderedArray;
     }
 
-    createOrderedArrayEntry(thisLine, titleIndex, isNumeric) {
+    createOrderedArrayEntry(thisLine, titleIndex, isNumeric, isDate) {
         if(thisLine[titleIndex]){
             return thisLine[titleIndex];
         } else {

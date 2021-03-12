@@ -13,7 +13,7 @@ class AnalyticsView extends React.Component {
                     <div className="active" filters="all-time">All Time</div>
                     <div filters="by-year">By Year</div>
                     <div filters="by-month">By Month</div>
-                    <div className="clear-all">Reset</div>
+                    <div className={"clear-all"} onClick={() => this.props.resetViewModel()}>Reset</div>
                 </div>
                 <p>*Some data is automatically removed, including bookings that were cancelled</p>
 
