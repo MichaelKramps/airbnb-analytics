@@ -62,10 +62,12 @@ class App extends React.Component {
                   <div>
                       <button className="go-back-button" onClick={() => this.resetState()}>&lt;== Go Back</button>
                   </div>
-                  <label>Upload more Airbnb csv files: </label>
-                  <input type="file" name="airbnb-csv-upload" id="airbnb-csv-upload"
-                         accept=".csv" multiple
-                         onChange={(e) => this.fileUploadHandler(e)}/>
+                  <label className="csv-file-upload-label">
+                      <input type="file" name="airbnb-csv-upload" id="airbnb-csv-upload"
+                             accept=".csv" multiple
+                             onChange={(e) => this.fileUploadHandler(e)} aria-label="File browser example" />
+                      <span className="file-custom"></span>
+                  </label>
                   <AnalyticsView {...this.state.viewModel} sortViewModelBy={this.sortViewModelBy} />
               </div>
           )
@@ -73,25 +75,30 @@ class App extends React.Component {
           return (
               <div>
                   <h1>An Airbnb Analytics Tool by <a href="https://www.unboundinvestor.com">UnboundInvestor.com</a></h1>
+                  <p>Upload your listings' csv files to get insights into your <a href="https://www.airbnb.com/">Airbnb</a> business.</p>
                   <div className="csv-upload-container">
-                      <label>Upload all your Airbnb csv files to see your analytics data ==> </label>
-                      <input type="file" name="airbnb-csv-upload" id="airbnb-csv-upload"
-                             accept=".csv" multiple
-                             onChange={(e) => this.fileUploadHandler(e)}/>
+                      <label className="csv-file-upload-label">
+                          <input type="file" name="airbnb-csv-upload" id="airbnb-csv-upload"
+                                 accept=".csv" multiple
+                                 onChange={(e) => this.fileUploadHandler(e)} aria-label="File browser example" />
+                          <span className="file-custom"></span>
+                      </label>
                   </div>
                   <div className="sample-button-container">
-                      <label>Or see the tool in action with some sample data ==> </label>
+                      <p>Or if you just want to see the tool in action then you can load up some sample data:</p>
                       <button id="sample-data-button" onClick={() => this.loadSampleData()}>Load Sample Data</button>
                   </div>
                   <h2>What is this and how do I use it?</h2>
-                  <p>This tool allows Airbnb hosts to upload .csv files provided by <a href="https://www.airbnb.com/">Airbnb</a> and get useful information about their listings.</p>
+                  <p>This tool allows Airbnb hosts to upload .csv files provided by Airbnb and get useful information about their listings.</p>
                   <ul>
                       <li>See monthly, yearly and all-time statistics for each listing</li>
                       <li>See payouts, number of stays and number of guests</li>
                       <li>See average nights/guest and price/night</li>
                       <li>See payout averages for different time frames</li>
-                      <li>Data for stays that start in one month and end in another are split between months*</li>
+                      <li>Data for stays that start in one month and end in another is split between months</li>
+                      <li>Order data to find your best and worst months</li>
                   </ul>
+                  <p>To see all this information about your listings you must gather the raw data yourself. Airbnb provides hosts with historical data about their listings that can be exported as .csv files. You can use this tool by downloading this data and uploading the files using the "Upload .csv files..." box above.</p>
                   <p>Here's a quick video showing how you can get the .csv files needed to use this tool:</p>
                   <iframe width="640" height="350" src="https://www.youtube.com/embed/5QY4nSiOop0" frameBorder="0"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

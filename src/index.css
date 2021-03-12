@@ -1,6 +1,8 @@
 body {
   margin: 0;
   color: #36454f;
+  font-size: 18px;
+  line-height: 1.7;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -9,19 +11,70 @@ body {
 }
 
 #root{
-  padding: 1em;
   max-width: 1280px;
   margin: auto;
 }
 
-.csv-upload-container {
-  padding: 36px 0;
-  font-size: 1.3em;
+.csv-upload-container{
+  margin-bottom: 16px
 }
 
-#airbnb-csv-upload {
-  color: #ee3300;
-  font-size: 1.2em;
+.csv-file-upload-label {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  height: 2.5rem;
+  font: 1rem/1.5 "Helvetica Neue", Arial, sans-serif;
+}
+
+#airbnb-csv-upload  {
+  min-width: 22em;
+  margin: 0;
+  opacity: 0;
+  font: 1rem/1.5 "Helvetica Neue", Arial, sans-serif;
+}
+
+.file-custom {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 5;
+  font-size: 20px;
+  height: 2.5rem;
+  padding: .5rem 1rem;
+  line-height: 1.5;
+  color: #555;
+  background-color: #fff;
+  border: .075rem solid #ddd;
+  border-radius: .25rem;
+  box-shadow: inset 0 .2rem .4rem rgba(0, 0, 0, .05);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.file-custom::before {
+  position: absolute;
+  top: -.075rem;
+  right: -.075rem;
+  bottom: -.075rem;
+  z-index: 6;
+  display: block;
+  content: "Browse";
+  height: 2.5rem;
+  padding: .5rem 1rem;
+  line-height: 2;
+  color: #555;
+  background-color: #eee;
+  border: .075rem solid #ddd;
+  border-radius: 0 .25rem .25rem 0;
+}
+
+.file-custom::after {
+  content: "Upload .csv files...";
+  line-height: 2;
 }
 
 .sample-button-container {
@@ -36,6 +89,7 @@ body {
   font-size: 14px;
   font-weight: bold;
   padding: 8px 12px;
+  margin: 12px 0;
   cursor: pointer;
 }
 
