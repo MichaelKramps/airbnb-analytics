@@ -70,6 +70,8 @@ class OrderHelper{
                 return 10;
             case "december":
                 return 11;
+            default:
+                return 0;
         }
     }
 }

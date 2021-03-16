@@ -33,7 +33,7 @@ class DataFilterer{
     }
 
     static filterOutTitleRow(data){
-        let firstRow = data[0]
+        let firstRow = data[0];
         if (this.notTitleRow(firstRow)){
             return data;
         }

@@ -7,8 +7,6 @@ import DataFilterer from "./ViewModelBuilder/DataFilterer/DataFilterer";
 import TitleIndexer from "./ViewModelBuilder/TitleIndexer/TitleIndexer";
 import DataOrderer from "./ViewModelBuilder/DataOrderer/DataOrderer";
 import sampleData from "./SampleData";
-import ViewModelSorter
-    from "./ViewModelManipulation/ViewModelSorter";
 
 class App extends React.Component {
 
@@ -17,7 +15,8 @@ class App extends React.Component {
     this.state = {
       fileUploaded: false,
       data: [],
-      viewModel: {}
+      viewModel: {},
+      error: false
     };
     this.csvParser = new CsvParser();
     this.fileUploadHandler = this.fileUploadHandler.bind(this);
@@ -28,8 +27,13 @@ class App extends React.Component {
   fileUploadHandler(e) {
       this.csvParser.readCsvFiles(e, (data) => {
           let treatedData = this.treatData(data);
-          let viewModel = new ViewModelBuilder(treatedData, TitleIndexer.staticIndexes).createViewModel();
-          this.setState({fileUploaded: true, data: treatedData, viewModel: viewModel});
+          console.log(treatedData)
+          if (treatedData.length > 0) {
+              let viewModel = new ViewModelBuilder(treatedData, TitleIndexer.staticIndexes).createViewModel();
+              this.setState({fileUploaded: true, data: treatedData, viewModel: viewModel, error: false});
+          } else {
+              this.setState({fileUploaded: false, data: [], viewModel: {}, error: true})
+          }
       });
   }
 
@@ -89,6 +93,18 @@ class App extends React.Component {
                                  onChange={(e) => this.fileUploadHandler(e)} aria-label="File browser example" />
                           <span className="file-custom"></span>
                       </label>
+                      {this.state.error &&
+                      <div className="error-message">
+                          <p>Oops! All your data was filtered out. This could be for a few reasons:</p>
+                          <ol>
+                              <li>You uploaded an empty file or a file with no data</li>
+                              <li>You uploaded a file that wasn't exported from Airbnb</li>
+                              <li>The file you exported from Airbnb was incomplete</li>
+                              <li>You manually removed data from your file</li>
+                          </ol>
+                          <p>You can try exporting your files from Airbnb again, or you can <a href="https://www.unboundinvestor.com/contact-us/">send me a message</a> with your problem and I can help!</p>
+                      </div>
+                      }
                   </div>
                   <div className="sample-button-container">
                       <p>Or if you just want to see the tool in action then you can load up some sample data:</p>
