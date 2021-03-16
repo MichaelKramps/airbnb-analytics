@@ -27,7 +27,6 @@ class App extends React.Component {
   fileUploadHandler(e) {
       this.csvParser.readCsvFiles(e, (data) => {
           let treatedData = this.treatData(data);
-          console.log(treatedData)
           if (treatedData.length > 0) {
               let viewModel = new ViewModelBuilder(treatedData, TitleIndexer.staticIndexes).createViewModel();
               this.setState({fileUploaded: true, data: treatedData, viewModel: viewModel, error: false});
